@@ -3,7 +3,7 @@
   "targets": [
     {
       "id": "GD07",
-      "label": "Blazing Fist",
+      "label": "ガンダムカード GD07 Blazing Fist",
       "query": "GD07 Blazing Fist",
       "max_price": 6000,
       "enabled": true
@@ -16,9 +16,16 @@
       "enabled": true
     },
     {
+      "id": "UA62BT",
+      "label": "ジョジョの奇妙な冒険 ブースターBOX",
+      "query": "ユニオンアリーナ ジョジョ ブースター",
+      "max_price": 6160,
+      "enabled": true
+    },
+    {
       "id": "UA62ST",
-      "label": "ジョジョの奇妙な冒険 スタートデッキ UA62ST",
-      "query": "ユニオンアリーナ ジョジョ UA62ST スタートデッキ",
+      "label": "ジョジョの奇妙な冒険 スタートデッキ",
+      "query": "ユニオンアリーナ ジョジョ UA62ST",
       "max_price": 1650,
       "enabled": true
     },
