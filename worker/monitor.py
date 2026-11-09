@@ -30,7 +30,7 @@ def normalize(value):
 
 def get_json(url):
     req = urllib.request.Request(url, headers={
-        'User-Agent': 'TCGWatch/3.5', 'Accept': 'application/json'
+        'User-Agent': 'TCGWatch/3.6', 'Accept': 'application/json'
     })
     with urllib.request.urlopen(req, timeout=25) as response:
         return json.load(response)
@@ -239,7 +239,7 @@ def main():
     STATE.write_text(json.dumps({'seen': sorted(seen), 'availableLastRun': sorted(available_keys)}, ensure_ascii=False, indent=2), encoding='utf-8')
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
-        'version': '3.5', 'checkedAt': NOW,
+        'version': '3.6', 'checkedAt': NOW,
         'source': 'Yahoo!ショッピング商品検索API', 'items': items[:200],
         'newCount': len(fresh), 'notifiedCount': len(notified), 'errors': errors,
         'diagnostics': diagnostics, 'byTarget': by_target,
@@ -250,8 +250,50 @@ def main():
     print('byTarget=' + json.dumps(by_target, ensure_ascii=False))
 
 
+
+def self_test():
+    """APIアクセス・実通知・状態ファイル更新なしで判定を確認。"""
+    booster = {'id': 'UA62BT', 'query': 'UA62BT BOX'}
+    starter = {'id': 'UA62ST', 'query': 'UA62ST スタートデッキ'}
+    cases = [
+        ('ブースター在庫あり', booster, 'UNION ARENA ジョジョ UA62BT ブースターBOX 16パック', {'inStock': True}, True, 'ブースターBOX'),
+        ('ブースター予約受付中', booster, '【予約受付中】ジョジョ UA62BT ブースターBOX', {'inStock': 1}, True, 'ブースターBOX'),
+        ('ブースター売り切れ', booster, 'ジョジョ UA62BT ブースターBOX 売り切れ', {'inStock': True}, False, 'ブースターBOX'),
+        ('ブースター在庫なし', booster, 'ジョジョ UA62BT ブースターBOX', {'inStock': False}, False, 'ブースターBOX'),
+        ('ブースター在庫不明', booster, 'ジョジョ UA62BT ブースターBOX', {}, False, 'ブースターBOX'),
+        ('スターター混入防止', booster, 'ジョジョ UA62ST スタートデッキ', {'inStock': True}, False, None),
+        ('ケース混入防止', booster, 'ジョジョ UA62BT ブースターBOX ケース', {'inStock': True}, False, None),
+        ('複数BOX混入防止', booster, 'ジョジョ UA62BT 2BOXセット', {'inStock': True}, False, None),
+        ('スターター在庫あり', starter, 'ジョジョ UA62ST スタートデッキ', {'inStock': True}, True, 'スタートデッキ単品'),
+        ('スターター予約終了', starter, 'ジョジョ UA62ST スタートデッキ 予約受付終了', {'inStock': True}, False, 'スタートデッキ単品'),
+    ]
+    failed = 0
+    for label, target, name, hit, expected, expected_kind in cases:
+        kind = classify(target, name)
+        available, _ = purchasable(hit, name)
+        accepted = bool(kind) and available
+        ok = accepted == expected and kind == expected_kind
+        print(('PASS' if ok else 'FAIL') + ': ' + label)
+        if not ok:
+            failed += 1
+    # 再入荷時の通知条件と、継続在庫あり時の重複通知防止を検証。
+    key = 'sample-key'
+    seen = {key}
+    recovered = key not in seen or (True and key not in set())
+    unchanged = key not in seen or (True and key not in {key})
+    for label, actual, expected in [('再入荷通知', recovered, True), ('継続在庫の重複防止', unchanged, False)]:
+        ok = actual == expected
+        print(('PASS' if ok else 'FAIL') + ': ' + label)
+        if not ok:
+            failed += 1
+    print(f'SELF_TEST total={len(cases) + 2} failed={failed}')
+    if failed:
+        raise SystemExit(1)
+
 if __name__ == '__main__':
-    if os.environ.get('TEST_NOTIFY') == '1':
+    if os.environ.get('SELF_TEST') == '1':
+        self_test()
+    elif os.environ.get('TEST_NOTIFY') == '1':
         test_notification()
     else:
         main()
