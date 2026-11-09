@@ -4,7 +4,13 @@ name: TCG reservation candidate monitor
 on:
   schedule:
     - cron: '*/10 * * * *'
+
   workflow_dispatch:
+    inputs:
+      test_notify:
+        description: 'Send test notification'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -17,6 +23,7 @@ jobs:
   monitor:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,13 +33,22 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Send test notification
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_notify }}
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          TEST_NOTIFY: '1'
+        run: python worker/monitor.py
+
       - name: Search allowed API and notify
+        if: ${{ !inputs.test_notify }}
         env:
           YAHOO_APP_ID: ${{ secrets.YAHOO_APP_ID }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: python worker/monitor.py
 
       - name: Save latest results and notification history
+        if: ${{ !inputs.test_notify }}
         shell: bash
         run: |
           set -e
