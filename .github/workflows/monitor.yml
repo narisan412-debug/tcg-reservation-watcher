@@ -55,6 +55,10 @@ jobs:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: python worker/monitor.py
 
+      - name: Save search history
+        if: ${{ !inputs.test_notify }}
+        run: python worker/save_history.py
+
       - name: Save latest results and notification history
         if: ${{ !inputs.test_notify }}
         shell: bash
@@ -64,21 +68,21 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          git add docs/data/results.json worker/state.json
+          git add docs/data/results.json docs/data/history.json worker/state.json
 
           if git diff --cached --quiet; then
             echo "No changes to save"
             exit 0
           fi
 
-          git commit -m 'Update monitored candidates'
+          git commit -m 'Update monitored candidates and search history'
 
           for attempt in 1 2 3; do
             git fetch origin main
 
             if git rebase origin/main; then
               if git push origin HEAD:main; then
-                echo "Results saved successfully"
+                echo "Results and history saved successfully"
                 exit 0
               fi
             else
