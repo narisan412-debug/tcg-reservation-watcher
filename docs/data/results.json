@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "checkedAt": "2026-11-09T11:22:58.157964+00:00",
+  "checkedAt": "2026-11-09T11:43:44.554488+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "items": [
     {
@@ -11,7 +11,7 @@
       "maxPrice": 5280,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/futaba-corp/one-cardbox-ya-10pset.html",
-      "detectedAt": "2026-11-09T11:22:58.157964+00:00",
+      "detectedAt": "2026-11-09T11:43:44.554488+00:00",
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     },
     {
@@ -22,7 +22,7 @@
       "maxPrice": 5280,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/futaba-corp/one-cardbox-ya-5pset.html",
-      "detectedAt": "2026-11-09T11:22:58.157964+00:00",
+      "detectedAt": "2026-11-09T11:43:44.554488+00:00",
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     },
     {
@@ -33,11 +33,22 @@
       "maxPrice": 5280,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/spica-style/box-onepiece.html",
-      "detectedAt": "2026-11-09T11:22:58.157964+00:00",
+      "detectedAt": "2026-11-09T11:43:44.554488+00:00",
+      "status": "価格条件に合う販売候補（予約可否は要確認）"
+    },
+    {
+      "key": "2d1d1150c700a01a847ed41c",
+      "target": "『ジョジョの奇妙な冒険』シリーズブースターパック",
+      "name": "27年2月12日発売 予約 UNION ARENA スタートデッキ ジョジョの奇妙な冒険 シリーズ UA62ST ユニオンアリーナ ボックス BOX",
+      "price": 4700,
+      "maxPrice": 6160,
+      "shop": "Yahoo!ショッピング",
+      "url": "https://store.shopping.yahoo.co.jp/free-world/cardbox-un-028.html",
+      "detectedAt": "2026-11-09T11:43:44.554488+00:00",
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     }
   ],
-  "newCount": 0,
+  "newCount": 1,
   "errors": [],
   "note": "予約確定情報ではありません。購入可否・送料・販売元は各ページで確認してください。"
 }
