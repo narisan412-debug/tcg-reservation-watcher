@@ -1,3 +1,4 @@
+
 name: TCG reservation candidate monitor
 
 on:
@@ -18,6 +19,8 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - uses: actions/setup-python@v5
         with:
@@ -30,8 +33,39 @@ jobs:
         run: python worker/monitor.py
 
       - name: Save latest results and notification history
+        shell: bash
         run: |
+          set -e
+
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
           git add docs/data/results.json worker/state.json
-          git diff --cached --quiet || (git commit -m 'Update monitored candidates' && git push)
+
+          if git diff --cached --quiet; then
+            echo "No changes to save"
+            exit 0
+          fi
+
+          git commit -m 'Update monitored candidates'
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+
+            if git rebase origin/main; then
+              if git push origin HEAD:main; then
+                echo "Results saved successfully"
+                exit 0
+              fi
+            else
+              git rebase --abort || true
+              echo "Rebase conflict; manual review required"
+              exit 1
+            fi
+
+            echo "Retrying push ($attempt/3)"
+            sleep 3
+          done
+
+          echo "Failed to save results after 3 attempts"
+          exit 1
