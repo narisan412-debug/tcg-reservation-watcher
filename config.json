@@ -1,3 +1,4 @@
+
 {
   "targets": [
     {
@@ -15,10 +16,10 @@
       "enabled": true
     },
     {
-      "id": "UA62BT",
-      "label": "『ジョジョの奇妙な冒険』シリーズブースターパック",
-      "query": "ユニオンアリーナ  ジョジョの奇妙な冒険BOX",
-      "max_price": 6160,
+      "id": "UA62ST",
+      "label": "ジョジョの奇妙な冒険 スタートデッキ UA62ST",
+      "query": "ユニオンアリーナ ジョジョ UA62ST スタートデッキ",
+      "max_price": 1650,
       "enabled": true
     },
     {
