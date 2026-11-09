@@ -25,13 +25,21 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           persist-credentials: true
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Test product and stock filters
+        if: ${{ !inputs.test_notify }}
+        env:
+          SELF_TEST: '1'
+        run: python worker/monitor.py
 
       - name: Send test notification
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_notify }}
