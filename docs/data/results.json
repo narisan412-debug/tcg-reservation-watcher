@@ -1,36 +1,36 @@
 {
   "version": "3.3",
-  "checkedAt": "2026-11-09T12:11:14.922964+00:00",
+  "checkedAt": "2026-11-09T12:32:34.239719+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "items": [
     {
       "key": "80c50a99cd84c8b4090a8212",
-      "target": "ジョジョの奇妙な冒険 スタートデッキ",
+      "target": "ジョジョの奇妙な冒険 スタートデッキ UA62ST",
       "name": "【予約2月12日発送予定】UNION ARENA スタートデッキ 『ジョジョの奇妙な冒険』シリーズ 【UA62ST】(クレジットカード決済禁止）",
       "price": 1650,
       "maxPrice": 1650,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/tcg-saiun/jan4582770134773.html",
-      "detectedAt": "2026-11-09T12:11:14.922964+00:00",
+      "detectedAt": "2026-11-09T12:32:34.239719+00:00",
       "kind": "スタートデッキ単品",
       "reservationHint": true,
       "status": "予約表記あり・販売ページで要確認"
     },
     {
       "key": "e92c281549fdb476376a746c",
-      "target": "ジョジョの奇妙な冒険 スタートデッキ",
+      "target": "ジョジョの奇妙な冒険 スタートデッキ UA62ST",
       "name": "UNION ARENA スタートデッキ 『ジョジョの奇妙な冒険』シリーズ 【UA62ST】 ユニオンアリーナ",
       "price": 1630,
       "maxPrice": 1650,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/g5store/g5262184.html",
-      "detectedAt": "2026-11-09T12:11:14.922964+00:00",
+      "detectedAt": "2026-11-09T12:32:34.239719+00:00",
       "kind": "スタートデッキ単品",
       "reservationHint": false,
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     }
   ],
-  "newCount": 2,
+  "newCount": 0,
   "errors": [],
   "note": "予約確定情報ではありません。送料・数量・販売元・予約可否は販売ページで確認してください。"
 }
