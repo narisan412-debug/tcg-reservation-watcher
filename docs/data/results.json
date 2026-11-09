@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "checkedAt": "2026-11-09T11:01:05.054278+00:00",
+  "checkedAt": "2026-11-09T11:20:29.765084+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "items": [
     {
@@ -11,7 +11,7 @@
       "maxPrice": 5280,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/futaba-corp/one-cardbox-ya-10pset.html",
-      "detectedAt": "2026-11-09T11:01:05.054278+00:00",
+      "detectedAt": "2026-11-09T11:20:29.765084+00:00",
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     },
     {
@@ -22,7 +22,7 @@
       "maxPrice": 5280,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/futaba-corp/one-cardbox-ya-5pset.html",
-      "detectedAt": "2026-11-09T11:01:05.054278+00:00",
+      "detectedAt": "2026-11-09T11:20:29.765084+00:00",
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     },
     {
@@ -33,7 +33,7 @@
       "maxPrice": 5280,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/spica-style/box-onepiece.html",
-      "detectedAt": "2026-11-09T11:01:05.054278+00:00",
+      "detectedAt": "2026-11-09T11:20:29.765084+00:00",
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     }
   ],
