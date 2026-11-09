@@ -30,7 +30,7 @@ def normalize(value):
 
 def get_json(url):
     req = urllib.request.Request(url, headers={
-        'User-Agent': 'TCGWatch/3.4', 'Accept': 'application/json'
+        'User-Agent': 'TCGWatch/3.5', 'Accept': 'application/json'
     })
     with urllib.request.urlopen(req, timeout=25) as response:
         return json.load(response)
@@ -93,12 +93,14 @@ def classify(target, name):
 def purchasable(hit, name):
     n = normalize(name)
     if any(normalize(word) in n for word in UNAVAILABLE):
-        return False, '販売終了・売切れ等の表記'
-    # Yahoo!ショッピングの商品検索APIで取得した inStock が明示的に true の場合のみ通知。
-    # 不明・欠落は購入可能と断定できないため通知しない。
-    if hit.get('inStock') is not True:
-        return False, '在庫ありを確認できない'
-    return True, '予約受付中' if any(word in n for word in ('予約', 'ご予約')) else '在庫あり'
+        return False, '売切れ・予約終了等の表記'
+    stock = hit.get('inStock')
+    # APIの在庫フラグを厳密に評価。欠落は在庫ありとみなさない。
+    if stock is True or stock == 1 or (isinstance(stock, str) and stock.lower() in ('true', '1')):
+        return True, '予約受付中（API在庫あり）' if '予約' in n else '在庫あり'
+    if stock is False or stock == 0 or (isinstance(stock, str) and stock.lower() in ('false', '0')):
+        return False, 'API在庫なし'
+    return False, 'API在庫不明'
 
 
 def queries_for(target):
@@ -121,6 +123,16 @@ def main():
     # 従来の seen は保持する。通知に失敗した候補は seen に追加しない。
     items, fresh, errors = [], [], []
     checked_codes = set()
+    diagnostics = {'apiHits': 0, 'priceExcluded': 0, 'invalidUrl': 0,
+                   'nameExcluded': 0, 'unavailableExcluded': 0,
+                   'outOfStockExcluded': 0, 'unknownStockExcluded': 0,
+                   'duplicateExcluded': 0, 'accepted': 0}
+    by_target = {}
+    available_keys = set()
+    # 旧 seen は通知履歴として引き継ぐ。再入荷検知は今回以降の状態から開始。
+    previous_available = set(previous.get('availableLastRun', []))
+    had_availability_snapshot = 'availableLastRun' in previous
+    api_errors = False
     appid = os.environ.get('YAHOO_APP_ID', '').strip()
     topic = os.environ.get('NTFY_TOPIC', '').strip()
     if not appid:
@@ -135,6 +147,9 @@ def main():
             continue
         if not appid:
             continue
+        target_id = str(target.get('id', ''))
+        target_stats = by_target.setdefault(target_id, {'apiHits': 0, 'accepted': 0,
+                                  'rejected': {}, 'queries': 0})
         for query in queries_for(target):
             if not query:
                 continue
@@ -145,24 +160,38 @@ def main():
                    + urllib.parse.urlencode(params))
             try:
                 result = get_json(url)
+                target_stats['queries'] += 1
                 for hit in result.get('hits', []):
+                    diagnostics['apiHits'] += 1
+                    target_stats['apiHits'] += 1
+                    def reject(reason):
+                        diagnostics[reason] += 1
+                        target_stats['rejected'][reason] = target_stats['rejected'].get(reason, 0) + 1
                     name = str(hit.get('name', ''))
                     price = hit.get('price')
                     page = hit.get('url', '')
                     if (not isinstance(price, (int, float)) or isinstance(price, bool)
                             or not 0 < price <= maxprice):
+                        reject('priceExcluded')
                         continue
                     if not isinstance(page, str) or not page.startswith('https://'):
+                        reject('invalidUrl')
                         continue
                     kind = classify(target, name)
                     if not kind:
+                        reject('nameExcluded')
                         continue
                     available, status = purchasable(hit, name)
                     if not available:
+                        reason_key = ('unavailableExcluded' if status == '売切れ・予約終了等の表記'
+                                      else 'outOfStockExcluded' if status == 'API在庫なし'
+                                      else 'unknownStockExcluded')
+                        reject(reason_key)
                         continue
                     itemid = str(hit.get('code') or page)
                     unique = (str(target.get('id', '')) + ':' + itemid)
                     if unique in checked_codes:
+                        reject('duplicateExcluded')
                         continue
                     checked_codes.add(unique)
                     key = hashlib.sha256(('yahoo:' + itemid + ':' + str(target.get('id', ''))).encode()).hexdigest()[:24]
@@ -175,9 +204,14 @@ def main():
                         'status': status + '（購入可否は販売ページで最終確認）'
                     }
                     items.append(entry)
-                    if key not in seen:
+                    diagnostics['accepted'] += 1
+                    target_stats['accepted'] += 1
+                    available_keys.add(key)
+                    # 初回発見または前回の在庫確認から復活した場合に通知する。
+                    if key not in seen or (had_availability_snapshot and key not in previous_available):
                         fresh.append(entry)
             except Exception as exc:
+                api_errors = True
                 errors.append('Yahoo検索失敗 ' + query + ': ' + str(exc)[:160])
 
     def priority(item):
@@ -198,16 +232,22 @@ def main():
         except Exception as exc:
             errors.append('通知失敗: ' + str(exc)[:120])
     seen.update(notified)
+    # API失敗時は一時的な欠品と誤認しないよう、前回の在庫状態を保持する。
+    if api_errors:
+        available_keys.update(previous_available)
     STATE.parent.mkdir(parents=True, exist_ok=True)
-    STATE.write_text(json.dumps({'seen': sorted(seen)}, ensure_ascii=False, indent=2), encoding='utf-8')
+    STATE.write_text(json.dumps({'seen': sorted(seen), 'availableLastRun': sorted(available_keys)}, ensure_ascii=False, indent=2), encoding='utf-8')
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
-        'version': '3.4', 'checkedAt': NOW,
+        'version': '3.5', 'checkedAt': NOW,
         'source': 'Yahoo!ショッピング商品検索API', 'items': items[:200],
         'newCount': len(fresh), 'notifiedCount': len(notified), 'errors': errors,
+        'diagnostics': diagnostics, 'byTarget': by_target,
         'note': 'APIの在庫フラグと商品名に基づく候補です。実際の購入・予約可否は販売ページで確認してください。'
     }, ensure_ascii=False, indent=2), encoding='utf-8')
     print(f'checked={len(items)} new={len(fresh)} notified={len(notified)} errors={len(errors)}')
+    print('diagnostics=' + json.dumps(diagnostics, ensure_ascii=False))
+    print('byTarget=' + json.dumps(by_target, ensure_ascii=False))
 
 
 if __name__ == '__main__':
