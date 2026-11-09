@@ -1,11 +1,54 @@
 {
   "version": 3,
-  "checkedAt": "2026-11-09T09:00:27.835553+00:00",
+  "checkedAt": "2026-11-09T09:36:47.755553+00:00",
   "source": "Yahoo!ショッピング商品検索API",
-  "items": [],
-  "newCount": 0,
-  "errors": [
-    "YAHOO_APP_ID が未設定です。"
+  "items": [
+    {
+      "key": "2df0eac153cbd9388e031d5d",
+      "target": "ガンダムカード 新弾",
+      "name": "ガンダムカードゲーム ブースターパック Dual Impact [GD02] 24パック入りBOX（再販）[バンダイ]《発売済・在庫品》",
+      "price": 5100,
+      "maxPrice": 5500,
+      "shop": "Yahoo!ショッピング",
+      "url": "https://store.shopping.yahoo.co.jp/amiami/card-00030892-s004.html",
+      "detectedAt": "2026-11-09T09:36:47.755553+00:00",
+      "status": "価格条件に合う販売候補（予約可否は要確認）"
+    },
+    {
+      "key": "e492e2e92025d948d75115d4",
+      "target": "ワンピースカード 新弾",
+      "name": "10個セット《トレカコレクター監修》【ワンピースカード BOXケース】[DEGARD] ワンピカ ワンピース BOX ローダー ケース ボックス 収納 保管 専用 保護",
+      "price": 1180,
+      "maxPrice": 5280,
+      "shop": "Yahoo!ショッピング",
+      "url": "https://store.shopping.yahoo.co.jp/futaba-corp/one-cardbox-ya-10pset.html",
+      "detectedAt": "2026-11-09T09:36:47.755553+00:00",
+      "status": "価格条件に合う販売候補（予約可否は要確認）"
+    },
+    {
+      "key": "287f6e0684b370018e8242a6",
+      "target": "ワンピースカード 新弾",
+      "name": "5個セット《トレカコレクター監修》【ワンピースカードBOX用ケース】[DEGARD] ワンピカ ワンピース BOX ローダー ケース ボックス 収納 保管 専用 保護",
+      "price": 780,
+      "maxPrice": 5280,
+      "shop": "Yahoo!ショッピング",
+      "url": "https://store.shopping.yahoo.co.jp/futaba-corp/one-cardbox-ya-5pset.html",
+      "detectedAt": "2026-11-09T09:36:47.755553+00:00",
+      "status": "価格条件に合う販売候補（予約可否は要確認）"
+    },
+    {
+      "key": "b5778b68bedb744c3464bfa4",
+      "target": "ワンピースカード 新弾",
+      "name": "ワンピースカードゲーム box マグネットローダー ボックス ケース トレーディングカード",
+      "price": 3090,
+      "maxPrice": 5280,
+      "shop": "Yahoo!ショッピング",
+      "url": "https://store.shopping.yahoo.co.jp/spica-style/box-onepiece.html",
+      "detectedAt": "2026-11-09T09:36:47.755553+00:00",
+      "status": "価格条件に合う販売候補（予約可否は要確認）"
+    }
   ],
+  "newCount": 4,
+  "errors": [],
   "note": "予約確定情報ではありません。購入可否・送料・販売元は各ページで確認してください。"
 }
