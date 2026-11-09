@@ -1,19 +1,8 @@
 {
   "version": 3,
-  "checkedAt": "2026-11-09T10:04:03.042906+00:00",
+  "checkedAt": "2026-11-09T11:01:05.054278+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "items": [
-    {
-      "key": "2df0eac153cbd9388e031d5d",
-      "target": "ガンダムカード 新弾",
-      "name": "ガンダムカードゲーム ブースターパック Dual Impact [GD02] 24パック入りBOX（再販）[バンダイ]《発売済・在庫品》",
-      "price": 5100,
-      "maxPrice": 5500,
-      "shop": "Yahoo!ショッピング",
-      "url": "https://store.shopping.yahoo.co.jp/amiami/card-00030892-s004.html",
-      "detectedAt": "2026-11-09T10:04:03.042906+00:00",
-      "status": "価格条件に合う販売候補（予約可否は要確認）"
-    },
     {
       "key": "e492e2e92025d948d75115d4",
       "target": "ワンピースカード 新弾",
@@ -22,7 +11,7 @@
       "maxPrice": 5280,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/futaba-corp/one-cardbox-ya-10pset.html",
-      "detectedAt": "2026-11-09T10:04:03.042906+00:00",
+      "detectedAt": "2026-11-09T11:01:05.054278+00:00",
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     },
     {
@@ -33,7 +22,7 @@
       "maxPrice": 5280,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/futaba-corp/one-cardbox-ya-5pset.html",
-      "detectedAt": "2026-11-09T10:04:03.042906+00:00",
+      "detectedAt": "2026-11-09T11:01:05.054278+00:00",
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     },
     {
@@ -44,7 +33,7 @@
       "maxPrice": 5280,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/spica-style/box-onepiece.html",
-      "detectedAt": "2026-11-09T10:04:03.042906+00:00",
+      "detectedAt": "2026-11-09T11:01:05.054278+00:00",
       "status": "価格条件に合う販売候補（予約可否は要確認）"
     }
   ],
