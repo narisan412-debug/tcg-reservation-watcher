@@ -3,7 +3,7 @@
     {
       "id": "GD07",
       "label": "Blazing Fist",
-      "query": "GD07Blazing Fist",
+      "query": "GD07 Blazing Fist",
       "max_price": 6000,
       "enabled": true
     },
@@ -17,7 +17,7 @@
     {
       "id": "UA62BT",
       "label": "『ジョジョの奇妙な冒険』シリーズブースターパック",
-      "query": "ユニオンアリーナ BOX",
+      "query": "ユニオンアリーナ  ジョジョの奇妙な冒険BOX",
       "max_price": 6160,
       "enabled": true
     },
