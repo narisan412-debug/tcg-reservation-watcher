@@ -1,10 +1,57 @@
 {
-  "version": "3.4",
-  "checkedAt": "2026-11-09T12:40:27.459826+00:00",
+  "version": "3.5",
+  "checkedAt": "2026-11-09T12:46:31.669771+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "items": [],
   "newCount": 0,
   "notifiedCount": 0,
   "errors": [],
+  "diagnostics": {
+    "apiHits": 53,
+    "priceExcluded": 44,
+    "invalidUrl": 0,
+    "nameExcluded": 5,
+    "unavailableExcluded": 0,
+    "outOfStockExcluded": 4,
+    "unknownStockExcluded": 0,
+    "duplicateExcluded": 0,
+    "accepted": 0
+  },
+  "byTarget": {
+    "UA62BT": {
+      "apiHits": 10,
+      "accepted": 0,
+      "rejected": {
+        "priceExcluded": 10
+      },
+      "queries": 2
+    },
+    "UA62ST": {
+      "apiHits": 12,
+      "accepted": 0,
+      "rejected": {
+        "priceExcluded": 8,
+        "outOfStockExcluded": 4
+      },
+      "queries": 2
+    },
+    "GD07": {
+      "apiHits": 1,
+      "accepted": 0,
+      "rejected": {
+        "priceExcluded": 1
+      },
+      "queries": 1
+    },
+    "onepiece": {
+      "apiHits": 30,
+      "accepted": 0,
+      "rejected": {
+        "priceExcluded": 25,
+        "nameExcluded": 5
+      },
+      "queries": 1
+    }
+  },
   "note": "APIの在庫フラグと商品名に基づく候補です。実際の購入・予約可否は販売ページで確認してください。"
 }
