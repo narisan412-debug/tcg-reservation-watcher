@@ -30,7 +30,7 @@ def normalize(value):
 
 def get_json(url):
     req = urllib.request.Request(url, headers={
-        'User-Agent': 'TCGWatch/3.6', 'Accept': 'application/json'
+        'User-Agent': 'TCGWatch/3.7', 'Accept': 'application/json'
     })
     with urllib.request.urlopen(req, timeout=25) as response:
         return json.load(response)
@@ -113,6 +113,19 @@ def queries_for(target):
     return [base]
 
 
+
+def notification_reason(key, seen, previous_available, has_snapshot, old_status, current_status):
+    """実在庫を保証せず、API情報の変化を通知する。"""
+    if key not in seen:
+        return '新規予約候補' if current_status == 'reservation' else '新規在庫候補'
+    if has_snapshot and key not in previous_available:
+        return '予約受付再開候補' if current_status == 'reservation' else '在庫復活候補'
+    old = old_status.get(key)
+    if isinstance(old, dict) and old.get('status') == 'stock' and current_status == 'reservation':
+        return '予約受付への切替候補'
+    return None
+
+
 def main():
     cfg = json.loads(CONFIG.read_text(encoding='utf-8'))
     try:
@@ -129,10 +142,15 @@ def main():
                    'duplicateExcluded': 0, 'accepted': 0}
     by_target = {}
     available_keys = set()
+    status_now = {}
+    status_before = previous.get('statusLastRun', {})
+    if not isinstance(status_before, dict):
+        status_before = {}
     # 旧 seen は通知履歴として引き継ぐ。再入荷検知は今回以降の状態から開始。
     previous_available = set(previous.get('availableLastRun', []))
     had_availability_snapshot = 'availableLastRun' in previous
     api_errors = False
+    failed_targets = set()
     appid = os.environ.get('YAHOO_APP_ID', '').strip()
     topic = os.environ.get('NTFY_TOPIC', '').strip()
     if not appid:
@@ -200,18 +218,23 @@ def main():
                         'name': name[:200], 'price': price, 'maxPrice': maxprice,
                         'shop': 'Yahoo!ショッピング', 'url': page,
                         'detectedAt': NOW, 'kind': kind,
-                        'reservationHint': status == '予約受付中',
+                        'reservationHint': status.startswith('予約受付中'),
                         'status': status + '（購入可否は販売ページで最終確認）'
                     }
                     items.append(entry)
                     diagnostics['accepted'] += 1
                     target_stats['accepted'] += 1
                     available_keys.add(key)
-                    # 初回発見または前回の在庫確認から復活した場合に通知する。
-                    if key not in seen or (had_availability_snapshot and key not in previous_available):
+                    current_status = 'reservation' if entry['reservationHint'] else 'stock'
+                    status_now[key] = {'status': current_status, 'targetId': target_id}
+                    reason = notification_reason(key, seen, previous_available, had_availability_snapshot,
+                                                 status_before, current_status)
+                    if reason:
+                        entry['notificationReason'] = reason
                         fresh.append(entry)
             except Exception as exc:
                 api_errors = True
+                failed_targets.add(target_id)
                 errors.append('Yahoo検索失敗 ' + query + ': ' + str(exc)[:160])
 
     def priority(item):
@@ -225,8 +248,8 @@ def main():
             errors.append('NTFY_TOPIC が未設定です')
             break
         try:
-            notify(topic, 'TCG Watch: available candidate',
-                   f"{item['status']} / {item['target']} / {item['name']} / {item['price']}円",
+            notify(topic, 'TCG Watch: ' + item['notificationReason'],
+                   f"{item['notificationReason']} / {item['status']} / {item['target']} / {item['name']} / {item['price']}円",
                    item['url'])
             notified.append(item['key'])
         except Exception as exc:
@@ -234,12 +257,20 @@ def main():
     seen.update(notified)
     # API失敗時は一時的な欠品と誤認しないよう、前回の在庫状態を保持する。
     if api_errors:
-        available_keys.update(previous_available)
+        # 検索失敗時に欠品扱いにして誤った再入荷通知を出さない。
+        # 失敗した商品群の前回状態を引き継ぐ。旧形式は安全側で全件維持。
+        if failed_targets and status_before:
+            for old_key, old_info in status_before.items():
+                if isinstance(old_info, dict) and old_info.get('targetId') in failed_targets:
+                    available_keys.add(old_key)
+                    status_now.setdefault(old_key, old_info)
+        else:
+            available_keys.update(previous_available)
     STATE.parent.mkdir(parents=True, exist_ok=True)
-    STATE.write_text(json.dumps({'seen': sorted(seen), 'availableLastRun': sorted(available_keys)}, ensure_ascii=False, indent=2), encoding='utf-8')
+    STATE.write_text(json.dumps({'seen': sorted(seen), 'availableLastRun': sorted(available_keys), 'statusLastRun': status_now}, ensure_ascii=False, indent=2), encoding='utf-8')
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
-        'version': '3.6', 'checkedAt': NOW,
+        'version': '3.7', 'checkedAt': NOW,
         'source': 'Yahoo!ショッピング商品検索API', 'items': items[:200],
         'newCount': len(fresh), 'notifiedCount': len(notified), 'errors': errors,
         'diagnostics': diagnostics, 'byTarget': by_target,
@@ -286,7 +317,21 @@ def self_test():
         print(('PASS' if ok else 'FAIL') + ': ' + label)
         if not ok:
             failed += 1
-    print(f'SELF_TEST total={len(cases) + 2} failed={failed}')
+    transitions = [
+        ('初回予約通知', notification_reason('x', set(), set(), True, {}, 'reservation'), '新規予約候補'),
+        ('初回在庫通知', notification_reason('x', set(), set(), True, {}, 'stock'), '新規在庫候補'),
+        ('予約受付再開', notification_reason('x', {'x'}, set(), True, {}, 'reservation'), '予約受付再開候補'),
+        ('在庫復活', notification_reason('x', {'x'}, set(), True, {}, 'stock'), '在庫復活候補'),
+        ('在庫から予約への変更', notification_reason('x', {'x'}, {'x'}, True, {'x': {'status': 'stock'}}, 'reservation'), '予約受付への切替候補'),
+        ('予約継続時の重複防止', notification_reason('x', {'x'}, {'x'}, True, {'x': {'status': 'reservation'}}, 'reservation'), None),
+        ('在庫継続時の重複防止', notification_reason('x', {'x'}, {'x'}, True, {'x': {'status': 'stock'}}, 'stock'), None),
+    ]
+    for label, actual, expected in transitions:
+        ok = actual == expected
+        print(('PASS' if ok else 'FAIL') + ': ' + label)
+        if not ok:
+            failed += 1
+    print(f'SELF_TEST total={len(cases) + 2 + len(transitions)} failed={failed}')
     if failed:
         raise SystemExit(1)
 
