@@ -1,96 +1,67 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0c1423"><title>TCG Watch Ver.3.9</title>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#070d20">
+<title>TCG Watch Ver.4.0</title>
 <style>
-*{box-sizing:border-box}body{background:#0c1423;color:#edf3ff;font-family:system-ui,-apple-system,sans-serif;margin:0 auto;padding:18px 14px 60px;max-width:800px}
-h1{font-size:24px;margin:0}h2{font-size:18px;margin:25px 0 12px}.sub,.muted{color:#aab8ce;font-size:13px}.sub{margin:6px 0 16px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-button{background:#24446e;color:#fff;border:1px solid #5276a5;padding:11px 14px;border-radius:11px;font-weight:700;cursor:pointer}
-button:disabled{opacity:.5}.panel,.stat,.notice{border:1px solid #394b68;border-radius:16px;background:#142139;padding:16px;margin:12px 0}
-.notice{border-color:#4d739e}.notice.good{border-color:#277c65}.notice.warn{border-color:#aa7d36}.notice.bad{border-color:#ab5050}
-.notice strong{display:block;margin-bottom:6px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.stat{margin:0;padding:14px 10px}.stat b{display:block;font-size:28px}.stat span{color:#b2bfd1;font-size:12px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #30415c;padding:13px 0}.row:last-child{border:0}
-.row .small{color:#aebed4;font-size:12px;margin-top:4px}.row b{text-align:right;font-size:14px;white-space:nowrap}
-.tag{font-size:11px;border:1px solid #52698b;border-radius:99px;padding:4px 8px;display:inline-block;margin-top:5px}
-.goodtext{color:#70e1b5}.warntext{color:#ffd18c}.badtext{color:#ffa5a5}
-.product{border-bottom:1px solid #30415c;padding:14px 0}.product:last-child{border:0}.product h3{font-size:15px;margin:8px 0}
-.price{font-size:22px;font-weight:750}a{color:#a8d1ff;overflow-wrap:anywhere}
-footer{color:#aebed4;font-size:12px;line-height:1.7;margin-top:28px}
-</style></head><body>
-<header><div><h1>🃏 TCG Watch</h1><p class="sub">監視ダッシュボード Ver.3.9</p></div><button id="reload" type="button">🔄 更新</button></header>
-<section class="notice" id="health" role="status" aria-live="polite"><strong>データ取得中</strong><span>最新の検索結果を読み込んでいます。</span></section>
-<div class="muted" id="updated">最終検索：確認中</div><div class="muted" id="refreshInfo">画面のデータは10分ごとに自動取得します。</div>
-<h2>検索状況</h2><section class="stats" aria-label="検索状況">
-<div class="stat"><b id="hits">—</b><span>検索ヒット</span></div>
-<div class="stat"><b id="accepted">—</b><span>条件一致</span></div>
-<div class="stat"><b id="notified">—</b><span>今回通知</span></div></section>
-<h2>監視商品</h2><div class="panel" id="targets">読み込み中…</div>
-<h2>除外理由</h2><div class="panel" id="rejected">読み込み中…</div>
-<h2>購入・予約候補</h2><div class="panel" id="products">読み込み中…</div>
-<h2>監視サイト</h2><div class="panel">
-<div class="row"><div><strong>Yahoo!ショッピング</strong><div class="small">商品検索API</div></div><span class="tag">監視対象</span></div>
-<div class="row"><div><strong>楽天市場</strong><div class="small">API登録ページの復旧待ち</div></div><span class="tag">未接続</span></div>
-</div>
-<footer>検索結果はAPIの在庫フラグ・商品名などによる候補判定です。実際の価格、予約受付、購入可否は必ず販売ページで確認してください。価格超過商品の個別情報は現在の結果ファイルにないため、除外件数のみ表示します。<br>「更新が遅い」は監視停止の確定ではありません。GitHub Actionsの定期実行は遅延する場合があります。</footer>
+*{box-sizing:border-box}body{margin:0;background:#070d20;color:#f0f4ff;font-family:system-ui,-apple-system,sans-serif}main{max-width:860px;margin:auto;padding:20px 16px 48px}header{display:flex;justify-content:space-between;align-items:center;gap:12px}h1{font-size:27px;margin:0}h2{font-size:19px;margin:30px 0 12px}.muted,small{color:#aab7d2}.muted{font-size:13px}button,select{background:#193c70;color:white;border:1px solid #5276aa;border-radius:12px;padding:12px;font-size:15px}button{cursor:pointer}.panel,.stat,.notice{background:#0a142e;border:1px solid #354767;border-radius:16px;padding:18px;margin-top:12px}.notice{border-color:#42736c}.notice.warn{border-color:#a97837}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{padding:15px 10px}.stat b{font-size:29px;display:block}.stat span{font-size:12px;color:#aab7d2}.row{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid #293a58;padding:15px 0}.row:last-child{border:0}.row strong{font-size:15px}.row small{display:block;margin-top:5px}.pill{font-size:12px;color:#c9d6f5;border:1px solid #405677;border-radius:18px;padding:5px 8px;white-space:nowrap}.chartwrap{overflow:hidden}.chartwrap svg{width:100%;height:auto;display:block}.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#cbd5e8}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}a{color:#8fc7ff;overflow-wrap:anywhere}.product{border-bottom:1px solid #293a58;padding:14px 0}.product:last-child{border:0}.price{font-size:20px;font-weight:700}.error{color:#ffb5a6}@media(max-width:420px){.stat b{font-size:25px}.row strong{font-size:14px}}
+</style>
+</head>
+<body><main>
+<header><div><h1>🃏 TCG Watch</h1><p class="muted">監視ダッシュボード Ver.4.0</p></div><button id="reload">🔄 更新</button></header>
+<section class="notice" id="health" role="status">データを読み込み中…</section>
+<p class="muted" id="updated"></p>
+<h2>最新の検索状況</h2><section class="stats"><div class="stat"><b id="hits">—</b><span>検索ヒット</span></div><div class="stat"><b id="accepted">—</b><span>条件一致</span></div><div class="stat"><b id="notified">—</b><span>今回通知</span></div></section>
+<h2>検索履歴グラフ</h2><section class="panel"><div class="toolbar"><strong id="historyTitle">履歴を読み込み中</strong><select id="range" aria-label="表示件数"><option value="24">直近24回</option><option value="72">直近72回</option><option value="168">直近168回</option><option value="1000">全履歴</option></select></div><p class="muted" id="historyInfo"></p><div class="legend"><span><i class="dot" style="background:#63b7ff"></i>検索ヒット</span><span><i class="dot" style="background:#6fe1ae"></i>条件一致</span><span><i class="dot" style="background:#f7bb6e"></i>今回通知</span></div><div class="chartwrap" id="chart" style="margin-top:15px"></div></section>
+<h2>商品別の検索状況</h2><section class="panel" id="targets">読み込み中…</section>
+<h2>除外理由</h2><section class="panel" id="rejections">読み込み中…</section>
+<h2>購入・予約候補</h2><section class="panel" id="products">読み込み中…</section>
+<h2>監視サイト</h2><section class="panel"><div class="row"><strong>Yahoo!ショッピング</strong><span class="pill">API連携中</span></div><div class="row"><strong>楽天市場</strong><span class="pill">API接続待ち</span></div></section>
+<p class="muted">検索結果は購入・予約可能性を保証しません。販売ページで在庫と価格を確認してください。履歴は導入後の成功した検索分から蓄積されます。</p>
+</main>
 <script>
 'use strict';
 const $=id=>document.getElementById(id);
 const labels={UA62BT:'ジョジョ ブースターBOX',UA62ST:'ジョジョ スタートデッキ',GD07:'ガンダム GD07',onepiece:'ワンピース'};
-const reasons={priceExcluded:'価格超過',nameExcluded:'商品名不一致',outOfStockExcluded:'在庫なし',unavailableExcluded:'売り切れ・予約終了',unknownStockExcluded:'在庫不明',invalidUrl:'URL不正',duplicateExcluded:'重複'};
-const number=x=>Number.isFinite(Number(x))?Number(x).toLocaleString('ja-JP'):'0';
-const make=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=String(text);if(cls)e.className=cls;return e};
-const clear=id=>{const e=$(id);e.replaceChildren();return e};
-let latest=null,loadError='',lastFetch=null;
-function health(){
- const box=$('health');box.replaceChildren();box.className='notice';
- const heading=make('strong'),body=make('span');box.append(heading,body);
- if(loadError){box.classList.add('bad');heading.textContent='⚠ データ取得エラー';body.textContent=loadError;return}
- if(!latest){heading.textContent='読み込み中';body.textContent='検索結果を取得しています。';return}
- const checked=new Date(latest.checkedAt),valid=Number.isFinite(checked.getTime());
- if(!valid){box.classList.add('warn');heading.textContent='⚠ 更新時刻が不明';body.textContent='results.jsonのcheckedAtを確認してください。';return}
- const mins=Math.max(0,Math.floor((Date.now()-checked.getTime())/60000));
- const elapsed=mins<60?mins+'分':Math.floor(mins/60)+'時間'+mins%60+'分';
- $('updated').textContent='最終検索：'+checked.toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'})+'（日本時間）';
- if(Array.isArray(latest.errors)&&latest.errors.length){box.classList.add('bad');heading.textContent='⚠ 検索エラーあり';body.textContent='検索処理で'+latest.errors.length+'件のエラーが記録されています。最終更新から'+elapsed+'。';return}
- if(mins>=35){box.classList.add('warn');heading.textContent='⚠ 更新が遅れています';body.textContent='最終検索から'+elapsed+'。GitHub Actionsの実行状況を確認してください。';return}
- box.classList.add('good');heading.textContent='✓ データ更新を確認';body.textContent='最終検索から'+elapsed+'。検索結果ファイルを正常に読み込めています。';
+const rejectionLabels={priceExcluded:'価格超過',nameExcluded:'商品名不一致',outOfStockExcluded:'在庫なし',unknownStockExcluded:'在庫不明',unavailableExcluded:'販売終了など',invalidUrl:'URL不正',duplicateExcluded:'重複'};
+let historyRecords=[];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=t=>{const d=new Date(t);return isNaN(d)?'不明':d.toLocaleString('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})};
+function drawChart(){
+ const n=Number($('range').value)||24;const rows=historyRecords.slice(-n);
+ $('historyTitle').textContent=`保存済み ${historyRecords.length} 回`;
+ $('historyInfo').textContent=rows.length?`${fmt(rows[0].checkedAt)} ～ ${fmt(rows[rows.length-1].checkedAt)}`:'履歴はまだありません。次回の監視成功後から記録されます。';
+ if(!rows.length){$('chart').textContent='グラフ用データを待っています。';return}
+ const w=720,h=250,l=48,r=15,t=18,b=42,iw=w-l-r,ih=h-t-b;
+ const max=Math.max(1,...rows.flatMap(x=>[Number(x.apiHits)||0,Number(x.accepted)||0,Number(x.notifiedCount)||0]));
+ const x=i=>l+(rows.length===1?iw/2:i*iw/(rows.length-1));const y=v=>t+ih-(Number(v)||0)/max*ih;
+ const series=[['apiHits','#63b7ff'],['accepted','#6fe1ae'],['notifiedCount','#f7bb6e']];
+ let parts=[`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="検索ヒット、条件一致、通知件数の推移">`];
+ for(let i=0;i<=4;i++){const v=max*i/4,yy=y(v);parts.push(`<line x1="${l}" x2="${w-r}" y1="${yy}" y2="${yy}" stroke="#263853"/><text x="${l-8}" y="${yy+4}" fill="#aab7d2" text-anchor="end" font-size="12">${Math.round(v)}</text>`)}
+ for(const [key,color] of series){const pts=rows.map((row,i)=>`${x(i).toFixed(1)},${y(row[key]).toFixed(1)}`).join(' ');parts.push(`<polyline fill="none" stroke="${color}" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" points="${pts}"/>`);if(rows.length===1)parts.push(`<circle cx="${x(0)}" cy="${y(rows[0][key])}" r="4" fill="${color}"/>`)}
+ parts.push(`<text x="${l}" y="${h-10}" fill="#aab7d2" font-size="12">${esc(fmt(rows[0].checkedAt).slice(5,16))}</text><text x="${w-r}" y="${h-10}" fill="#aab7d2" text-anchor="end" font-size="12">${esc(fmt(rows[rows.length-1].checkedAt).slice(5,16))}</text></svg>`);
+ $('chart').innerHTML=parts.join('');
 }
-function render(data){
- latest=data;const d=data.diagnostics||{},targets=data.byTarget||{},items=Array.isArray(data.items)?data.items:[];
- $('hits').textContent=number(d.apiHits);$('accepted').textContent=number(d.accepted);$('notified').textContent=number(data.notifiedCount);
- const t=clear('targets'),entries=Object.entries(targets);
- if(!entries.length)t.append(make('p','商品別のデータはありません。'));
- for(const [id,v] of entries){
- const r=make('div',undefined,'row'),l=make('div'),right=make('div');
- l.append(make('strong',labels[id]||id),make('div','検索 '+number(v.apiHits)+'件 / 条件一致 '+number(v.accepted)+'件','small'));
- right.append(make('b',number(v.accepted)+'件'),make('div',Number(v.accepted)>0?'候補あり':'候補なし',Number(v.accepted)>0?'tag goodtext':'tag'));
- r.append(l,right);t.append(r);
- }
- const ex=clear('rejected');let any=false;
- for(const [k,label] of Object.entries(reasons)){if(Number(d[k])>0){const r=make('div',undefined,'row');r.append(make('span',label),make('b',number(d[k])+'件'));ex.append(r);any=true}}
- if(!any)ex.append(make('p','除外された商品はありません。'));
- const p=clear('products');
- if(!items.length)p.append(make('p','現在、条件に合う候補はありません。検索が停止したという意味ではありません。','muted'));
- for(const item of items){
- const e=make('article',undefined,'product');e.append(make('div',labels[item.target]||item.target||'監視商品','muted'),make('h3',item.name||'商品名なし'),make('div','¥'+number(item.price),'price'));
- if(item.status)e.append(make('div',item.status,'muted'));
- if(item.notificationReason)e.append(make('div',item.notificationReason,'tag'));
- if(typeof item.url==='string'&&/^https:\/\/[^\s/]+/.test(item.url)){const a=make('a','販売ページを開く');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';e.append(a)}
- p.append(e);
- }
- health();
-}
+async function getJSON(path){const res=await fetch(path+'?t='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error(`${path}: HTTP ${res.status}`);return res.json()}
 async function load(){
- $('reload').disabled=true;loadError='';
+ $('reload').disabled=true;
  try{
- const r=await fetch('./data/results.json?ts='+Date.now(),{cache:'no-store'});
- if(!r.ok)throw new Error('HTTP '+r.status);
- const d=await r.json();if(!d||typeof d!=='object')throw new Error('JSON形式が不正');
- render(d);lastFetch=new Date();$('refreshInfo').textContent='画面データ取得：'+lastFetch.toLocaleTimeString('ja-JP',{timeZone:'Asia/Tokyo'})+'（日本時間） / 10分ごとに自動取得';
- }catch(e){loadError='最新データの取得に失敗しました（'+e.message+'）。通信状況やGitHub Pagesを確認してください。';health()}
+ const d=await getJSON('./data/results.json');
+ const age=Math.max(0,Math.floor((Date.now()-new Date(d.checkedAt).getTime())/60000));
+ if(!Number.isFinite(age))throw Error('最終検索日時が不正です');
+ const errors=Array.isArray(d.errors)?d.errors:[];
+ const state=errors.length?'検索エラーあり':age>=35?'更新が遅れています':'データ更新を確認';
+ $('health').className='notice'+(errors.length||age>=35?' warn':'');
+ $('health').innerHTML=`<strong>${errors.length||age>=35?'⚠':'✓'} ${state}</strong><p>最終検索から${age}分。${errors.length?`エラー ${errors.length}件。GitHub Actionsを確認してください。`:age>=35?'GitHub Actionsの実行状況を確認してください。':'検索結果ファイルを正常に読み込めています。'}</p>`;
+ $('updated').textContent=`最終検索：${fmt(d.checkedAt)}（日本時間）\n画面データ取得：${fmt(new Date().toISOString())}（日本時間）／10分ごとに自動取得`;
+ $('hits').textContent=d.diagnostics?.apiHits??'—';$('accepted').textContent=d.diagnostics?.accepted??d.items?.length??0;$('notified').textContent=d.notifiedCount??0;
+ const target=d.byTarget||{};$('targets').innerHTML=Object.entries(target).map(([key,v])=>`<div class="row"><div><strong>${esc(labels[key]||key)}</strong><small>検索 ${Number(v.apiHits)||0}件 / 条件一致 ${Number(v.accepted)||0}件</small></div><span class="pill">${Number(v.accepted)||0}件</span></div>`).join('')||'対象データなし';
+ const rej=d.diagnostics||{};$('rejections').innerHTML=Object.entries(rejectionLabels).filter(([k])=>Number(rej[k])>0).map(([k,v])=>`<div class="row"><strong>${v}</strong><strong>${Number(rej[k])}件</strong></div>`).join('')||'除外データなし';
+ const items=Array.isArray(d.items)?d.items:[];
+ $('products').innerHTML=items.length?items.map(item=>{const url=String(item.url||item.link||'');const safe=/^https:\/\//i.test(url)?url:'';return `<div class="product"><strong>${esc(item.name||item.title||'商品名不明')}</strong><p class="price">${Number.isFinite(Number(item.price))?'¥'+Number(item.price).toLocaleString('ja-JP'):'価格不明'}</p>${safe?`<a href="${esc(safe)}" target="_blank" rel="noopener noreferrer">販売ページを確認</a>`:''}</div>`}).join(''):'現在、条件に合う候補はありません。';
+ try{const h=await getJSON('./data/history.json');historyRecords=Array.isArray(h.records)?h.records.filter(x=>x&&x.checkedAt):[];drawChart()}catch(e){historyRecords=[];drawChart();$('historyInfo').textContent='履歴ファイル未作成、または読み込み失敗。GitHub Actionsの履歴保存設定を確認してください。'}
+ }catch(e){$('health').className='notice warn';$('health').textContent='⚠ データ取得エラー：'+e.message}
  finally{$('reload').disabled=false}
 }
-$('reload').addEventListener('click',load);
-load();setInterval(health,60000);setInterval(load,600000);
+$('reload').addEventListener('click',load);$('range').addEventListener('change',drawChart);load();setInterval(load,600000);
 </script></body></html>
