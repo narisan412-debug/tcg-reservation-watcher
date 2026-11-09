@@ -1,11 +1,10 @@
-
 {
   "targets": [
     {
-      "id": "gundam",
-      "label": "ガンダムカード 新弾",
-      "query": "ガンダムカード ブースター BOX",
-      "max_price": 5500,
+      "id": "GD07",
+      "label": "Blazing Fist",
+      "query": "GD07Blazing Fist",
+      "max_price": 6000,
       "enabled": true
     },
     {
@@ -16,8 +15,8 @@
       "enabled": true
     },
     {
-      "id": "union",
-      "label": "ユニオンアリーナ 新弾",
+      "id": "UA62BT",
+      "label": "『ジョジョの奇妙な冒険』シリーズブースターパック",
       "query": "ユニオンアリーナ BOX",
       "max_price": 6160,
       "enabled": true
