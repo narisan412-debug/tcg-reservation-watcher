@@ -1,4 +1,3 @@
-
 name: TCG reservation candidate monitor
 
 on:
@@ -41,6 +40,12 @@ jobs:
           SELF_TEST: '1'
         run: python worker/monitor.py
 
+      - name: Test price recording filters
+        if: ${{ !inputs.test_notify }}
+        env:
+          PRICE_SELF_TEST: '1'
+        run: python worker/price_watch.py
+
       - name: Send test notification
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_notify }}
         env:
@@ -48,18 +53,18 @@ jobs:
           TEST_NOTIFY: '1'
         run: python worker/monitor.py
 
-      - name: Search allowed API and notify
+      - name: Search allowed API, notify and collect reference prices
         if: ${{ !inputs.test_notify }}
         env:
           YAHOO_APP_ID: ${{ secrets.YAHOO_APP_ID }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-        run: python worker/monitor.py
+        run: python worker/price_watch.py
 
       - name: Save search history
         if: ${{ !inputs.test_notify }}
         run: python worker/save_history.py
 
-      - name: Save latest results and notification history
+      - name: Save monitoring results and price history
         if: ${{ !inputs.test_notify }}
         shell: bash
         run: |
@@ -68,21 +73,21 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
-          git add docs/data/results.json docs/data/history.json worker/state.json
+          git add -A docs/data worker/state.json
 
           if git diff --cached --quiet; then
             echo "No changes to save"
             exit 0
           fi
 
-          git commit -m 'Update monitored candidates and search history'
+          git commit -m 'Update monitored candidates and reference prices'
 
           for attempt in 1 2 3; do
             git fetch origin main
 
             if git rebase origin/main; then
               if git push origin HEAD:main; then
-                echo "Results and history saved successfully"
+                echo "Results and price history saved successfully"
                 exit 0
               fi
             else
