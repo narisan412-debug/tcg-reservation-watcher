@@ -1,324 +1,47 @@
-
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#03071a">
-<title>TCG Watch Ver.4.1</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#03071a">
+<title>TCG Watch Ver.4.2</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#03071a;color:#f2f5ff;font-family:system-ui,sans-serif}
-main{max-width:900px;margin:auto;padding:20px 15px 55px}
-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-h1{font-size:27px;margin:0}
-h2{font-size:21px;margin:32px 0 15px}
-p{line-height:1.65}
-small,.muted{color:#a5b3ce}
-button,select{background:#193a69;color:white;border:1px solid #42618d;border-radius:13px;padding:12px;font-size:15px}
-button:disabled{opacity:.5}
-.panel,.notice,.stat{border:1px solid #354767;border-radius:19px;padding:18px;margin:12px 0;background:#060d24}
-.notice{border-color:#47756d}
-.notice.warn{border-color:#a87640}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.stat{margin:0;padding:15px 10px}
-.stat b{display:block;font-size:31px}
-.stat span{font-size:12px;color:#a5b3ce}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid #354767}
-.row:last-child{border:0}
-.row strong{font-size:15px}
-.row small{display:block;margin-top:5px}
-.controls{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
-.controls select{flex:1;min-width:125px}
-.legend{display:flex;flex-wrap:wrap;gap:15px;color:#a5b3ce;font-size:12px}
-.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
-.blue{background:#50a5fa}.green{background:#38ba85}.orange{background:#f0a32e}
-canvas{width:100%;height:235px;display:block;margin-top:12px}
-.tag{font-size:12px;border:1px solid #52698b;border-radius:20px;padding:5px 9px;white-space:nowrap}
-a{color:#8fc3ff}
-.product{padding:15px 0;border-bottom:1px solid #354767}
-.product:last-child{border:0}
-.price{font-size:23px;font-weight:bold}
-footer{font-size:12px;color:#a5b3ce;margin-top:30px}
+*{box-sizing:border-box}body{margin:0;background:#03071a;color:#f2f5ff;font-family:system-ui,-apple-system,sans-serif}main{max-width:850px;margin:auto;padding:22px 16px 70px}header{display:flex;align-items:center;justify-content:space-between;gap:12px}h1{font-size:27px;margin:0}h2{font-size:21px;margin:30px 0 14px}p{line-height:1.6}.muted,small{color:#a5b3ce}.muted{font-size:14px}.panel,.notice,.stat{border:1px solid #354767;border-radius:22px;padding:20px;background:#060d27}.notice{border-color:#47756d;margin:26px 0 16px}.notice.warn{border-color:#b78338}.notice.error{border-color:#b74c5b}.notice strong{display:block;font-size:17px;margin-bottom:8px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.stat{padding:17px 12px}.stat b{display:block;font-size:31px}.stat span{font-size:12px;color:#a5b3ce}.button,select{border:1px solid #47618b;border-radius:15px;background:#193a69;color:white;padding:13px 15px;font-size:15px;cursor:pointer}.button:disabled{opacity:.55}.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid #34415d}.row:last-child{border-bottom:0}.row strong{font-size:15px}.row small{display:block;margin-top:6px}.pill{border:1px solid #445677;border-radius:99px;padding:6px 10px;white-space:nowrap;font-size:12px}.good{color:#70e1b5}.warntext{color:#ffd08a}.chart{width:100%;height:auto;display:block;overflow:visible}.legend{display:flex;flex-wrap:wrap;gap:15px;margin:15px 0;color:#a5b3ce;font-size:12px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.chartbox{padding-top:12px}.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.compare>div{border:1px solid #2f405f;border-radius:13px;padding:10px;font-size:12px}.compare b{display:block;font-size:19px;margin-top:5px}.product{border-bottom:1px solid #34415d;padding:15px 0}.product:last-child{border:0}.product a{color:#9dc9ff;overflow-wrap:anywhere}.product .price{font-size:21px;font-weight:bold}.empty{padding:12px 0}.split{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}footer{margin-top:36px;color:#8e9cb7;font-size:12px;line-height:1.8}svg text{font-family:system-ui,sans-serif;fill:#9aabc9;font-size:11px}@media(max-width:370px){.stat b{font-size:26px}.stat{padding:12px 8px}h1{font-size:23px}.panel{padding:15px}}
 </style>
 </head>
-<body>
-<main>
-<header>
-<div>
-<h1>🃏 TCG Watch</h1>
-<p class="muted">監視ダッシュボード Ver.4.1</p>
-</div>
-<button id="reload">🔄 更新</button>
-</header>
-
-<section id="health" class="notice">
-データを読み込んでいます…
-</section>
+<body><main>
+<header><div><h1>🃏 TCG Watch</h1><p class="muted">監視ダッシュボード Ver.4.2</p></div><button class="button" id="reload">🔄 更新</button></header>
+<section class="notice" id="health" role="status"><strong>データを確認中…</strong><span>検索結果を読み込んでいます。</span></section>
 <p class="muted" id="updated">最終検索：確認中</p>
-
-<h2>最新の検索状況</h2>
-<div class="stats">
-<div class="stat"><b id="hits">—</b><span>検索ヒット</span></div>
-<div class="stat"><b id="accepted">—</b><span>条件一致</span></div>
-<div class="stat"><b id="notified">—</b><span>今回通知</span></div>
-</div>
-
-<h2>検索履歴グラフ</h2>
-<div class="panel">
-<div class="row">
-<strong id="historyCount">保存済み 0回</strong>
-<select id="historyLimit">
-<option value="24">直近24回</option>
-<option value="48">直近48回</option>
-<option value="100">直近100回</option>
-</select>
-</div>
-<div class="legend">
-<span><i class="dot blue"></i>検索ヒット</span>
-<span><i class="dot green"></i>条件一致</span>
-<span><i class="dot orange"></i>今回通知</span>
-</div>
-<canvas id="totalChart"></canvas>
-<p class="muted" id="historyMessage"></p>
-</div>
-
-<h2>商品別の検索履歴</h2>
-<div class="panel">
-<div class="controls">
-<select id="target">
-<option value="UA62BT">ジョジョ ブースターBOX</option>
-<option value="UA62ST">ジョジョ スタートデッキ</option>
-<option value="GD07">ガンダム GD07</option>
-<option value="onepiece">ワンピース</option>
-</select>
-<select id="metric">
-<option value="both">検索数＋条件一致数</option>
-<option value="apiHits">検索ヒット数</option>
-<option value="accepted">条件一致数</option>
-</select>
-</div>
-<div class="stats" style="grid-template-columns:repeat(2,1fr)">
-<div class="stat"><b id="targetHits">—</b><span>最新検索ヒット</span></div>
-<div class="stat"><b id="targetAccepted">—</b><span>最新条件一致</span></div>
-</div>
-<div class="legend" style="margin-top:17px">
-<span><i class="dot blue"></i>検索ヒット</span>
-<span><i class="dot green"></i>条件一致</span>
-</div>
-<canvas id="targetChart"></canvas>
-<p class="muted" id="targetMessage"></p>
-</div>
-
-<h2>監視商品</h2>
-<div class="panel" id="targets">読み込み中…</div>
-
-<h2>除外理由</h2>
-<div class="panel" id="rejected">読み込み中…</div>
-
-<h2>購入・予約候補</h2>
-<div class="panel" id="products">読み込み中…</div>
-
-<h2>監視サイト</h2>
-<div class="panel">
-<div class="row">
-<strong>Yahoo!ショッピング</strong>
-<span class="tag">API連携中</span>
-</div>
-<div class="row">
-<strong>楽天市場</strong>
-<span class="tag">API連携待ち</span>
-</div>
-</div>
-
-<footer>
-検索結果は販売ページで購入・予約可能か確認してください。
-<br>画面データは10分ごとに自動取得します。
-</footer>
+<h2>最新の検索状況</h2><section class="stats"><div class="stat"><b id="hits">—</b><span>検索ヒット</span></div><div class="stat"><b id="accepted">—</b><span>条件一致</span></div><div class="stat"><b id="notified">—</b><span>今回通知</span></div></section>
+<h2>前回検索との比較</h2><section class="panel"><div id="comparison">履歴を確認しています…</div></section>
+<h2>検索履歴グラフ</h2><section class="panel"><div class="split"><strong id="historyCount">履歴読み込み中</strong><select id="range" aria-label="履歴表示件数"><option value="12">直近12回</option><option value="24" selected>直近24回</option><option value="72">直近72回</option><option value="0">すべて</option></select></div><div class="legend"><span><i class="dot" style="background:#59a8ff"></i>検索ヒット</span><span><i class="dot" style="background:#34b887"></i>条件一致</span><span><i class="dot" style="background:#eea42e"></i>今回通知</span></div><div id="chart" class="chartbox">グラフ用データを読み込んでいます…</div></section>
+<h2>商品別の検索状況</h2><section class="panel" id="targets">読み込み中…</section>
+<h2>商品別の履歴グラフ</h2><section class="panel"><div class="split"><strong id="targetTitle">監視商品</strong><select id="targetSelect" aria-label="グラフ対象商品"><option value="UA62BT">ジョジョ ブースターBOX</option><option value="UA62ST">ジョジョ スタートデッキ</option><option value="GD07">ガンダム GD07</option><option value="onepiece">ワンピース</option></select></div><div class="legend"><span><i class="dot" style="background:#59a8ff"></i>検索ヒット</span><span><i class="dot" style="background:#34b887"></i>条件一致</span></div><div id="targetChart" class="chartbox">履歴を確認しています…</div></section>
+<h2>除外理由</h2><section class="panel" id="rejected">読み込み中…</section>
+<h2>購入・予約候補</h2><section class="panel" id="products">読み込み中…</section>
+<h2>監視サイト</h2><section class="panel"><div class="row"><strong>Yahoo!ショッピング</strong><span class="pill">API連携中</span></div><div class="row"><strong>楽天市場</strong><span class="pill">API接続待ち</span></div></section>
+<footer>候補はYahoo!ショッピングAPIの情報と設定条件から抽出しています。実際の在庫・予約受付・価格は販売ページで確認してください。画面は10分ごとに最新データを取得します。GitHub Actionsの実行間隔を保証するものではありません。</footer>
 </main>
-
 <script>
+'use strict';
 const $=id=>document.getElementById(id);
-const names={
-UA62BT:"ジョジョ ブースターBOX",
-UA62ST:"ジョジョ スタートデッキ",
-GD07:"ガンダム GD07",
-onepiece:"ワンピース"
-};
-const reasons={
-priceExcluded:"価格超過",
-nameExcluded:"商品名不一致",
-outOfStockExcluded:"在庫なし",
-unavailableExcluded:"販売・予約不可",
-unknownStockExcluded:"在庫不明",
-invalidUrl:"URL不正",
-duplicateExcluded:"重複"
-};
-let result=null,records=[];
-const number=v=>Number(v)||0;
-const fmt=t=>{
-const d=new Date(t);
-return isNaN(d)?"不明":d.toLocaleString("ja-JP",{timeZone:"Asia/Tokyo"});
-};
-const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",
-'"':"&quot;","'":"&#39;"
-})[c]);
-function draw(id,series,labels){
-const canvas=$(id);
-const ratio=window.devicePixelRatio||1;
-const w=Math.max(canvas.clientWidth,250),h=235;
-canvas.width=w*ratio;canvas.height=h*ratio;
-const ctx=canvas.getContext("2d");
-ctx.scale(ratio,ratio);
-ctx.clearRect(0,0,w,h);
-const left=40,right=12,top=16,bottom=34;
-const pw=w-left-right,ph=h-top-bottom;
-const values=series.flatMap(s=>s.values);
-const max=Math.max(1,...values.map(number));
-ctx.font="11px system-ui";
-ctx.lineWidth=1;
-for(let i=0;i<=4;i++){
-const y=top+ph*i/4;
-ctx.strokeStyle="#354767";
-ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(w-right,y);ctx.stroke();
-ctx.fillStyle="#91a2c0";
-ctx.textAlign="right";
-ctx.fillText(Math.round(max*(4-i)/4),left-7,y+4);
-}
-if(!labels.length)return;
-const x=i=>left+(labels.length===1?pw/2:pw*i/(labels.length-1));
-const y=v=>top+ph-(number(v)/max)*ph;
-for(const s of series){
-ctx.strokeStyle=s.color;ctx.fillStyle=s.color;ctx.lineWidth=2;
-ctx.beginPath();
-s.values.forEach((v,i)=>{
-if(i===0)ctx.moveTo(x(i),y(v));
-else ctx.lineTo(x(i),y(v));
-});
-ctx.stroke();
-if(labels.length<=40){
-s.values.forEach((v,i)=>{
-ctx.beginPath();ctx.arc(x(i),y(v),3,0,Math.PI*2);ctx.fill();
-});
-}
-}
-ctx.fillStyle="#91a2c0";
-ctx.textAlign="left";
-ctx.fillText(labels[0]||"",left,h-9);
-ctx.textAlign="right";
-if(labels.length>1)ctx.fillText(labels.at(-1)||"",w-right,h-9);
-}
-function renderCharts(){
-const limit=number($("historyLimit").value);
-const rows=records.slice(-limit);
-$("historyCount").textContent="保存済み "+records.length+"回";
-const labels=rows.map(r=>{
-const d=new Date(r.checkedAt);
-return isNaN(d)?"":d.toLocaleString("ja-JP",{
-timeZone:"Asia/Tokyo",month:"numeric",day:"numeric",
-hour:"2-digit",minute:"2-digit"
-});
-});
-draw("totalChart",[
-{color:"#50a5fa",values:rows.map(r=>r.apiHits)},
-{color:"#38ba85",values:rows.map(r=>r.accepted)},
-{color:"#f0a32e",values:rows.map(r=>r.notifiedCount)}
-],labels);
-$("historyMessage").textContent=rows.length<2?
-"履歴が2回以上になると推移を線で確認できます。":
-"表示中："+rows.length+"回分";
-const key=$("target").value;
-const metric=$("metric").value;
-const latest=result?.byTarget?.[key]||{};
-$("targetHits").textContent=number(latest.apiHits);
-$("targetAccepted").textContent=number(latest.accepted);
-const targetRows=rows.map(r=>r.byTarget?.[key]||{});
-const series=[];
-if(metric!=="accepted")series.push({
-color:"#50a5fa",values:targetRows.map(r=>r.apiHits)
-});
-if(metric!=="apiHits")series.push({
-color:"#38ba85",values:targetRows.map(r=>r.accepted)
-});
-draw("targetChart",series,labels);
-$("targetMessage").textContent=
-names[key]+"：直近"+rows.length+"回分を表示";
-}
-function renderResult(){
-const d=result||{};
-const diag=d.diagnostics||{};
-$("hits").textContent=number(diag.apiHits);
-$("accepted").textContent=number(diag.accepted);
-$("notified").textContent=number(d.notifiedCount);
-$("updated").textContent="最終検索："+fmt(d.checkedAt);
-$("targets").innerHTML=Object.entries(names).map(([k,name])=>{
-const v=d.byTarget?.[k]||{};
-return '<div class="row"><div><strong>'+name+
-'</strong><small>検索 '+number(v.apiHits)+
-'件 / 条件一致 '+number(v.accepted)+
-'件</small></div><span class="tag">'+
-number(v.accepted)+'件</span></div>';
-}).join("");
-$("rejected").innerHTML=Object.entries(reasons).map(([k,name])=>{
-const n=number(diag[k]);
-return n?'<div class="row"><span>'+name+
-'</span><strong>'+n+'件</strong></div>':"";
-}).join("")||"除外された商品はありません。";
-const items=Array.isArray(d.items)?d.items:[];
-$("products").innerHTML=items.length?items.map(item=>{
-const name=escapeHTML(item.name||item.title||"商品");
-const price=number(item.price);
-let url=item.url||item.productUrl||"";
-try{
-const u=new URL(url);
-if(!["https:","http:"].includes(u.protocol))url="";
-}catch{url="";}
-return '<div class="product"><strong>'+name+
-'</strong><p class="price">'+
-(price?price.toLocaleString("ja-JP")+"円":"価格未確認")+
-'</p>'+(url?'<a href="'+escapeHTML(url)+
-'" target="_blank" rel="noopener noreferrer">販売ページを確認</a>':"")+
-'</div>';
-}).join(""):"現在、条件に合う候補はありません。";
-}
-async function getJSON(path){
-const response=await fetch(path+"?t="+Date.now(),{cache:"no-store"});
-if(!response.ok)throw Error("HTTP "+response.status);
-return response.json();
-}
-async function load(){
-$("reload").disabled=true;
-try{
-result=await getJSON("./data/results.json");
-renderResult();
-const age=(Date.now()-new Date(result.checkedAt).getTime())/60000;
-$("health").className="notice"+(age>30?" warn":"");
-$("health").textContent=age>30?
-"⚠ 最終検索から"+Math.floor(age)+"分経過しています。監視処理を確認してください。":
-"✓ データ更新を確認。検索結果ファイルを正常に読み込めています。";
-}catch(e){
-$("health").className="notice warn";
-$("health").textContent="⚠ 最新データの取得に失敗："+e.message;
-}
-try{
-const history=await getJSON("./data/history.json");
-records=Array.isArray(history.records)?
-history.records.filter(r=>r&&r.checkedAt):[];
-records.sort((a,b)=>new Date(a.checkedAt)-new Date(b.checkedAt));
-}catch(e){
-$("historyMessage").textContent="履歴ファイルを取得できません："+e.message;
-}
-renderCharts();
-$("reload").disabled=false;
-}
-$("reload").onclick=load;
-$("historyLimit").onchange=renderCharts;
-$("target").onchange=renderCharts;
-$("metric").onchange=renderCharts;
-window.addEventListener("resize",renderCharts);
-load();
-setInterval(load,600000);
-</script>
-</body>
-</html>
+const names={UA62BT:'ジョジョ ブースターBOX',UA62ST:'ジョジョ スタートデッキ',GD07:'ガンダム GD07',onepiece:'ワンピース'};
+let history=[],lastResults=null;
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function num(v){const n=Number(v);return Number.isFinite(n)?n:0;}
+function date(v){const d=new Date(v);return Number.isNaN(d.getTime())?'日時不明':d.toLocaleString('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+function shortDate(v){const d=new Date(v);return Number.isNaN(d.getTime())?'—':d.toLocaleString('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});}
+function row(a,b,small=''){return `<div class="row"><div><strong>${esc(a)}</strong>${small?`<small>${esc(small)}</small>`:''}</div><strong>${esc(b)}</strong></div>`;}
+function metrics(r){return {hits:num(r.apiHits??r.diagnostics?.apiHits),accepted:num(r.accepted??r.diagnostics?.accepted??r.items?.length),notified:num(r.notifiedCount)};}
+function delta(a,b){const d=a-b;return `${d>0?'+':''}${d}`;}
+function renderComparison(){if(!lastResults)return;const cur=metrics(lastResults);const currentTime=Date.parse(lastResults.checkedAt);const prev=[...history].reverse().find(r=>Date.parse(r.checkedAt)<currentTime-1000);if(!prev){$('comparison').textContent='比較できる前回の履歴がまだありません。次の検索が記録されると比較できます。';return;}const old=metrics(prev);$('comparison').innerHTML=`<small>比較対象：${esc(date(prev.checkedAt))}</small><div class="compare"><div>検索ヒット<b>${esc(delta(cur.hits,old.hits))}</b></div><div>条件一致<b>${esc(delta(cur.accepted,old.accepted))}</b></div><div>今回通知<b>${esc(delta(cur.notified,old.notified))}</b></div></div>`;}
+function svgGraph(records,fields){if(!records.length)return '<p class="muted">履歴がありません。検索の実行後に表示されます。</p>';const W=660,H=220,L=40,R=15,T=20,B=36,plotW=W-L-R,plotH=H-T-B;const max=Math.max(1,...records.flatMap(r=>fields.map(f=>num(f.value(r)))));const top=Math.ceil(max/4)*4;const x=i=>L+(records.length===1?plotW/2:i*plotW/(records.length-1));const y=v=>T+plotH-(num(v)/top)*plotH;let out=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="検索履歴の折れ線グラフ">`;for(let i=0;i<=4;i++){const val=top*i/4;out+=`<line x1="${L}" y1="${y(val)}" x2="${W-R}" y2="${y(val)}" stroke="#344564"/><text x="${L-7}" y="${y(val)+4}" text-anchor="end">${Math.round(val)}</text>`;}for(const f of fields){const pts=records.map((r,i)=>`${x(i)},${y(f.value(r))}`).join(' ');out+=`<polyline fill="none" stroke="${f.color}" stroke-width="3" points="${pts}"/>`;if(records.length<=24)records.forEach((r,i)=>out+=`<circle cx="${x(i)}" cy="${y(f.value(r))}" r="3.5" fill="${f.color}"><title>${esc(date(r.checkedAt))}: ${num(f.value(r))}件</title></circle>`);}out+=`<text x="${L}" y="${H-8}">${esc(shortDate(records[0].checkedAt))}</text><text x="${W-R}" y="${H-8}" text-anchor="end">${esc(shortDate(records[records.length-1].checkedAt))}</text></svg>`;return out;}
+function subset(){const n=num($('range').value);return n?history.slice(-n):history;}
+function renderCharts(){const rec=subset();$('historyCount').textContent=`保存済み ${history.length} 回`;$('chart').innerHTML=svgGraph(rec,[{color:'#59a8ff',value:r=>r.apiHits},{color:'#34b887',value:r=>r.accepted},{color:'#eea42e',value:r=>r.notifiedCount}]);const key=$('targetSelect').value;$('targetTitle').textContent=names[key];$('targetChart').innerHTML=svgGraph(rec,[{color:'#59a8ff',value:r=>r.byTarget?.[key]?.apiHits},{color:'#34b887',value:r=>r.byTarget?.[key]?.accepted}]);}
+function renderResults(d){lastResults=d;const m=metrics(d);$('hits').textContent=m.hits;$('accepted').textContent=m.accepted;$('notified').textContent=m.notified;$('updated').textContent=`最終検索：${date(d.checkedAt)}（日本時間）`;
+const age=(Date.now()-Date.parse(d.checkedAt))/60000;const h=$('health');h.className='notice';let head='',detail='';if(!d.checkedAt||!Number.isFinite(age)){h.classList.add('warn');head='⚠ 検索日時を確認できません';detail='results.json の checkedAt を確認してください。';}else if(age>45){h.classList.add('warn');head='⚠ 検索更新が遅れています';detail=`最終検索から約${Math.floor(age)}分。GitHub Actions の実行状況を確認してください。`; }else if(d.errors?.length){h.classList.add('error');head='⚠ 検索でエラーが報告されました';detail=`エラー ${d.errors.length} 件。GitHub Actions のログを確認してください。`;}else if(m.accepted>0){head='✓ 購入・予約候補があります';detail=`条件に合う候補 ${m.accepted} 件。販売ページで購入・予約の可否を確認してください。`;}else{head='✓ 検索データを読み込みました';detail=`最終検索から約${Math.max(0,Math.floor(age))}分。現在、条件に合う候補はありません。`;}h.innerHTML=`<strong>${esc(head)}</strong><span>${esc(detail)}</span>`;
+const bt=d.byTarget||{};$('targets').innerHTML=Object.keys(names).map(k=>{const t=bt[k]||{};return row(names[k],`${num(t.accepted)}件`,`検索 ${num(t.apiHits)}件 / 条件一致 ${num(t.accepted)}件`);}).join('');const diag=d.diagnostics||{};const exclusions=[['価格超過','priceExcluded'],['商品名不一致','nameExcluded'],['在庫なし','outOfStockExcluded'],['販売不可','unavailableExcluded'],['在庫不明','unknownStockExcluded'],['重複','duplicateExcluded']];$('rejected').innerHTML=exclusions.filter(([_,k])=>num(diag[k])>0).map(([label,k])=>row(label,`${num(diag[k])}件`)).join('')||'<p class="muted">除外理由の集計はありません。</p>';
+const items=Array.isArray(d.items)?d.items:[];$('products').innerHTML=items.length?items.map(p=>{const name=p.name??p.title??'商品名不明';const url=p.url??p.link??'';const valid=/^https:\/\//i.test(url);const price=p.price!=null?`<div class="price">¥${num(p.price).toLocaleString('ja-JP')}</div>`:'';return `<div class="product"><strong>${esc(name)}</strong>${price}<p class="muted">${esc(p.reservationHint??p.status??'在庫・予約可否は販売ページで確認')}</p>${valid?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">販売ページを開く ↗</a>`:''}</div>`;}).join(''):'<p class="empty">現在、条件に合う候補はありません。</p>';renderComparison();}
+async function getJson(path){const r=await fetch(path+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(`${path}: HTTP ${r.status}`);return r.json();}
+async function load(){const btn=$('reload');btn.disabled=true;try{const results=await getJson('data/results.json');renderResults(results);try{const h=await getJson('data/history.json');history=Array.isArray(h.records)?h.records.filter(x=>x&&x.checkedAt).sort((a,b)=>Date.parse(a.checkedAt)-Date.parse(b.checkedAt)):[];}catch(e){history=[];$('chart').innerHTML=`<p class="warntext">履歴の読み込みに失敗しました：${esc(e.message)}</p>`;}renderComparison();renderCharts();}catch(e){$('health').className='notice error';$('health').innerHTML=`<strong>⚠ データを読み込めません</strong><span>${esc(e.message)}</span>`;}finally{btn.disabled=false;}}
+$('reload').addEventListener('click',load);$('range').addEventListener('change',renderCharts);$('targetSelect').addEventListener('change',renderCharts);load();setInterval(load,10*60*1000);
+</script></body></html>
