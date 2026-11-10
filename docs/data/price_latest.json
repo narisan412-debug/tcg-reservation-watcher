@@ -1,0 +1,204 @@
+{
+  "version": "4.3",
+  "checkedAt": "2026-11-10T11:49:38.999061+00:00",
+  "source": "Yahoo!ショッピング商品検索API",
+  "description": "名称・商品コードが合う商品の参考掲載価格。価格上限超過・売切れを含む。通知判定には使用しない。",
+  "byTarget": {
+    "UA62BT": {
+      "label": "ジョジョの奇妙な冒険 ブースターBOX UA62BT",
+      "maxPrice": 6160,
+      "listingCount": 5,
+      "availableCount": 2,
+      "minListedPrice": 9000,
+      "minAvailablePrice": 10800,
+      "listings": [
+        {
+          "code": "tcg-saiun_jan4582770066968",
+          "name": "【予約2月12日発送予定】UNION ARENA 『ジョジョの奇妙な冒険』シリーズ ブースターBOX【UA62BT】(1BOX)",
+          "price": 9000,
+          "url": "https://store.shopping.yahoo.co.jp/tcg-saiun/jan4582770066968.html",
+          "availableFlag": false,
+          "availabilityLabel": "API在庫なし"
+        },
+        {
+          "code": "mediaworld-plus_13922334000",
+          "name": "『予約』{TCG} (BOX) UNION ARENA(ユニオンアリーナ) ブースターパック 『ジョジョの奇妙な冒険』シリーズ【UA62BT】 バンダイ(16パック)(20270212)",
+          "price": 9160,
+          "url": "https://store.shopping.yahoo.co.jp/mediaworld-plus/13922334000.html",
+          "availableFlag": false,
+          "availabilityLabel": "API在庫なし"
+        },
+        {
+          "code": "media-world_13922334000",
+          "name": "『予約』{TCG} (BOX) UNION ARENA(ユニオンアリーナ) ブースターパック 『ジョジョの奇妙な冒険』シリーズ【UA62BT】 バンダイ(16パック)(20270212)",
+          "price": 9180,
+          "url": "https://store.shopping.yahoo.co.jp/media-world/13922334000.html",
+          "availableFlag": false,
+          "availabilityLabel": "API在庫なし"
+        },
+        {
+          "code": "ajplaza_b0hn6kpnsz",
+          "name": "【テープ付き】バンダイ UNION ARENA ブースターパック ジョジョの奇妙な冒険シリーズ UA62BT BOX 16パック入り",
+          "price": 10800,
+          "url": "https://store.shopping.yahoo.co.jp/ajplaza/b0hn6kpnsz.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        },
+        {
+          "code": "shijimi-ya_unionarena-card-0007a-1box-2702",
+          "name": "【予約】【テープ付き】ユニオンアリーナ UNION ARENA ブースターパック 『ジョジョの奇妙な冒険』シリーズ UA62BT BOX",
+          "price": 12400,
+          "url": "https://store.shopping.yahoo.co.jp/shijimi-ya/unionarena-card-0007a-1box-2702.html",
+          "availableFlag": true,
+          "availabilityLabel": "予約受付中（API在庫あり）"
+        }
+      ],
+      "mixedProducts": false
+    },
+    "UA62ST": {
+      "label": "ジョジョの奇妙な冒険 スタートデッキ UA62ST",
+      "maxPrice": 1650,
+      "listingCount": 5,
+      "availableCount": 2,
+      "minListedPrice": 1630,
+      "minAvailablePrice": 3780,
+      "listings": [
+        {
+          "code": "g5store_g5262184",
+          "name": "UNION ARENA スタートデッキ 『ジョジョの奇妙な冒険』シリーズ 【UA62ST】 ユニオンアリーナ",
+          "price": 1630,
+          "url": "https://store.shopping.yahoo.co.jp/g5store/g5262184.html",
+          "availableFlag": false,
+          "availabilityLabel": "API在庫なし"
+        },
+        {
+          "code": "tcg-saiun_jan4582770134773",
+          "name": "【予約2月12日発送予定】UNION ARENA スタートデッキ 『ジョジョの奇妙な冒険』シリーズ 【UA62ST】(クレジットカード決済禁止）",
+          "price": 1650,
+          "url": "https://store.shopping.yahoo.co.jp/tcg-saiun/jan4582770134773.html",
+          "availableFlag": false,
+          "availabilityLabel": "API在庫なし"
+        },
+        {
+          "code": "xiv-shop_4582770134773",
+          "name": "【予約】UNION ARENA ユニオンアリーナ スタートデッキ 『ジョジョの奇妙な冒険』【UA62ST】【27年2月12日発売予定】",
+          "price": 2980,
+          "url": "https://store.shopping.yahoo.co.jp/xiv-shop/4582770134773.html",
+          "availableFlag": false,
+          "availabilityLabel": "API在庫なし"
+        },
+        {
+          "code": "mediaworld-plus_13922332000",
+          "name": "『予約』{TCG} UNION ARENA(ユニオンアリーナ) スタートデッキ 『ジョジョの奇妙な冒険』シリーズ 【UA62ST】 バンダイ(20270212)",
+          "price": 3780,
+          "url": "https://store.shopping.yahoo.co.jp/mediaworld-plus/13922332000.html",
+          "availableFlag": true,
+          "availabilityLabel": "予約受付中（API在庫あり）"
+        },
+        {
+          "code": "media-world_13922332000",
+          "name": "『予約』{TCG} UNION ARENA(ユニオンアリーナ) スタートデッキ 『ジョジョの奇妙な冒険』シリーズ 【UA62ST】 バンダイ(20270212)",
+          "price": 3880,
+          "url": "https://store.shopping.yahoo.co.jp/media-world/13922332000.html",
+          "availableFlag": true,
+          "availabilityLabel": "予約受付中（API在庫あり）"
+        }
+      ],
+      "mixedProducts": false
+    },
+    "GD07": {
+      "label": "ガンダムカード GD07 Blazing Fist",
+      "maxPrice": 6000,
+      "listingCount": 1,
+      "availableCount": 1,
+      "minListedPrice": 6990,
+      "minAvailablePrice": 6990,
+      "listings": [
+        {
+          "code": "sogostoreluluku_ffwwwwwwwww",
+          "name": "BOX ガンダムカードゲーム ブースターパック Blazing Fist  GD07 発売日または翌日に発送予定 カートン発送はお約束できません",
+          "price": 6990,
+          "url": "https://store.shopping.yahoo.co.jp/sogostoreluluku/ffwwwwwwwww.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        }
+      ],
+      "mixedProducts": false
+    },
+    "onepiece": {
+      "label": "ワンピースカード 新弾",
+      "maxPrice": 5280,
+      "listingCount": 15,
+      "availableCount": 15,
+      "minListedPrice": 10960,
+      "minAvailablePrice": 10960,
+      "listings": [
+        {
+          "code": "evalue-omochayasan_4582769966002",
+          "name": "ワンピース カードゲーム 神の島の冒険 BOX ONE PIECE OP-15 バンダイ BANDAI 新品未開封",
+          "price": 10960,
+          "url": "https://store.shopping.yahoo.co.jp/evalue-omochayasan/4582769966002.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        },
+        {
+          "code": "evalue-omochayasan_4582769982897",
+          "name": "ワンピース カードゲーム 決戦の刻 BOX ONE PIECE OP-16 バンダイ BANDAI 新品未開封",
+          "price": 11660,
+          "url": "https://store.shopping.yahoo.co.jp/evalue-omochayasan/4582769982897.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        },
+        {
+          "code": "noahshoping_4582769982897",
+          "name": "『新品未開封』ONE PIECE(ワンピース)カードゲーム ブースターパック 決戦の刻 OP-16 [BOX]",
+          "price": 11700,
+          "url": "https://store.shopping.yahoo.co.jp/noahshoping/4582769982897.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        },
+        {
+          "code": "evalue-omochayasan_4582770058406",
+          "name": "ワンピース カードゲーム 世界最強の戦士 BOX ONE PIECE OP-17 バンダイ BANDAI 新品未開封",
+          "price": 11860,
+          "url": "https://store.shopping.yahoo.co.jp/evalue-omochayasan/4582770058406.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        },
+        {
+          "code": "hobbyhobby-shop_20260821-01",
+          "name": "ONE PIECE ワンピースカードゲーム 世界最強の戦士 OP-17 ブースターパック 24パック入り BOX 新品未開封 プロモカード付",
+          "price": 12800,
+          "url": "https://store.shopping.yahoo.co.jp/hobbyhobby-shop/20260821-01.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        },
+        {
+          "code": "mediaworld-plus_13922237000",
+          "name": "『予約』{TCG} (BOX) ONE PIECE(ワンピース) カードゲーム ブースターパック 神の支配【OP-18】 バンダイ(24パック)(20261121)",
+          "price": 14380,
+          "url": "https://store.shopping.yahoo.co.jp/mediaworld-plus/13922237000.html",
+          "availableFlag": true,
+          "availabilityLabel": "予約受付中（API在庫あり）"
+        },
+        {
+          "code": "evalue-omochayasan_4582769865220",
+          "name": "ワンピース カードゲーム エクストラブースター Heroines Edition BOX ONE PIECE EB-03 バンダイ BANDAI 新品未開封",
+          "price": 14380,
+          "url": "https://store.shopping.yahoo.co.jp/evalue-omochayasan/4582769865220.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        },
+        {
+          "code": "yuyuspi_4582770059229",
+          "name": "ONE PIECEカードゲーム EB-05 エクストラブースター ONE PIECE Heroines Edition vol.2 1BOX 24パック入り ワンピースカード バンダイ",
+          "price": 14480,
+          "url": "https://store.shopping.yahoo.co.jp/yuyuspi/4582770059229.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        }
+      ],
+      "mixedProducts": true
+    }
+  }
+}
