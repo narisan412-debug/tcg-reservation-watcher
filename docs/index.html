@@ -128,3 +128,124 @@ renderPrice();
 $('reload').addEventListener('click',load);$('range').addEventListener('change',()=>{renderCharts();renderPrice();});$('targetSelect').addEventListener('change',renderCharts);$('priceTarget').addEventListener('change',renderPrice);
 load();setInterval(load,600000);
 
+</script>
+<script>
+'use strict';
+(function () {
+  const $ = id => document.getElementById(id);
+  const cash = value => typeof value === 'number' && Number.isFinite(value) && value > 0
+    ? '¥' + value.toLocaleString('ja-JP') : '記録なし';
+  const price = value => typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : null;
+  const label = {
+    UA62BT: 'ジョジョ ブースターBOX', UA62ST: 'ジョジョ スタートデッキ',
+    GD07: 'ガンダム GD07', onepiece: 'ワンピース（複数商品）'
+  };
+  const version = document.querySelector('header .muted');
+  if (version) version.textContent = '監視ダッシュボード Ver.4.4';
+  const area = document.createElement('section');
+  area.className = 'panel';
+  area.innerHTML = `
+    <h3>価格分析 Ver.4.4</h3>
+    <p class="muted">最安掲載価格の前回比較。店舗ごとの値下げではありません。</p>
+    <div class="split">
+      <strong>価格グラフの期間</strong>
+      <select id="v44range" aria-label="価格グラフの期間">
+        <option value="12">直近12回</option>
+        <option value="24" selected>直近24回</option>
+        <option value="72">直近72回</option>
+        <option value="0">すべて</option>
+      </select>
+    </div>
+    <div id="v44compare" class="compare"></div>
+    <h3 style="margin-top:20px">設定上限までの価格差</h3>
+    <div id="v44gap"></div>
+    <h3 style="margin-top:20px">値下がりした監視対象</h3>
+    <div id="v44drops"></div>
+    <h3 style="margin-top:20px">価格差ランキング</h3>
+    <div id="v44rank"></div>
+    <p class="muted">APIの在庫あり表示は実際の購入・予約を保証しません。価格だけで通知しません。</p>`;
+  const listings = $('priceListings');
+  if (!listings) return;
+  const currentPanel = listings.closest("section.panel");
+  currentPanel.parentNode.insertBefore(area, currentPanel.nextSibling);
+  const setText = (id, value) => { $(id).textContent = value; };
+  function previous(id, field) {
+    if (!priceLatest || !Array.isArray(priceHistory)) return null;
+    const now = Date.parse(priceLatest.checkedAt);
+    for (let i = priceHistory.length - 1; i >= 0; i--) {
+      const row = priceHistory[i];
+      if (Date.parse(row.checkedAt) >= now - 1000) continue;
+      const value = price(row.byTarget?.[id]?.[field]);
+      if (value !== null) return value;
+    }
+    return null;
+  }
+  function compare(now, before) {
+    if (now === null || before === null) return '比較データなし';
+    const diff = now - before;
+    return diff < 0 ? '▼ ' + cash(-diff) + ' 安い'
+      : diff > 0 ? '▲ ' + cash(diff) + ' 高い' : '変化なし';
+  }
+  function render() {
+    const id = $('priceTarget')?.value;
+    const info = priceLatest?.byTarget?.[id];
+    if (!info) {
+      setText('v44compare', '価格履歴の保存を待っています。');
+      setText('v44gap', '価格データがありません。');
+    } else {
+      const box = $('v44compare');
+      box.replaceChildren();
+      for (const [title, key] of [
+        ['掲載最安価格の前回比', 'minListedPrice'],
+        ['API在庫あり最安の前回比', 'minAvailablePrice']
+      ]) {
+        const cell = document.createElement('div');
+        const heading = document.createElement('span'); heading.textContent = title;
+        const val = document.createElement('b');
+        val.textContent = compare(price(info[key]), previous(id, key));
+        cell.append(heading, val); box.append(cell);
+      }
+      const gap = price(info.minAvailablePrice) === null ? null
+        : info.minAvailablePrice - info.maxPrice;
+      setText('v44gap', gap === null ? 'API在庫あり価格の記録なし'
+        : gap > 0 ? '上限まであと ' + cash(gap) + ' の値下がりが必要'
+        : gap === 0 ? '設定上限と同額' : '設定上限より ' + cash(-gap) + ' 安い');
+    }
+    const rows = Object.entries(priceLatest?.byTarget || {})
+      .filter(([id]) => Object.prototype.hasOwnProperty.call(label, id))
+      .map(([id, data]) => ({ id, data, current: price(data.minAvailablePrice),
+        gap: price(data.minAvailablePrice) === null ? Infinity : data.minAvailablePrice - data.maxPrice }));
+    rows.sort((a, b) => a.gap - b.gap);
+    const ranking = $('v44rank'); ranking.replaceChildren();
+    const drops = $('v44drops'); drops.replaceChildren();
+    for (const row of rows) {
+      const line = document.createElement('div'); line.className = 'row';
+      const name = document.createElement('strong'); name.textContent = label[row.id];
+      const amount = document.createElement('span');
+      amount.textContent = row.current === null ? '記録なし'
+        : cash(row.current) + '（上限差 ' + (row.gap > 0 ? '+' : '') + row.gap.toLocaleString('ja-JP') + '円）';
+      line.append(name, amount); ranking.append(line);
+      const before = previous(row.id, 'minAvailablePrice');
+      if (before !== null && row.current !== null && row.current < before) {
+        const drop = document.createElement('p');
+        drop.textContent = label[row.id] + '：' + cash(before) + ' → ' + cash(row.current)
+          + '（-' + cash(before - row.current) + '）';
+        drops.append(drop);
+      }
+    }
+    if (!rows.length) ranking.textContent = '価格データを待っています。';
+    if (!drops.childNodes.length) drops.textContent = '現時点で価格低下は確認できません。';
+  }
+  priceRows = function () {
+    const n = Number($('v44range').value);
+    return n ? priceHistory.slice(-n) : priceHistory;
+  };
+  $('v44range').addEventListener('change', () => { renderPrice(); render(); });
+  $('priceTarget').addEventListener('change', render);
+  $('reload').addEventListener('click', () => setTimeout(render, 1600));
+  setTimeout(render, 1800);
+  setInterval(render, 60000);
+})();
+</script>
+</body></html>
+
