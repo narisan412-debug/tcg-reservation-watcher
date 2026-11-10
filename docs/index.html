@@ -127,4 +127,4 @@ renderPrice();
 }catch(e){$('health').className='notice error';$('health').innerHTML='<strong>⚠ データ取得失敗</strong><span>'+esc(e.message)+'</span>';}finally{btn.disabled=false;}}
 $('reload').addEventListener('click',load);$('range').addEventListener('change',()=>{renderCharts();renderPrice();});$('targetSelect').addEventListener('change',renderCharts);$('priceTarget').addEventListener('change',renderPrice);
 load();setInterval(load,600000);
-</script></body></html>
+
