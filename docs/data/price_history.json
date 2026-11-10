@@ -1,32 +1,32 @@
 {
-  "version": "4.3",
+  "version": "4.5",
   "records": [
     {
       "checkedAt": "2026-11-10T11:49:38.999061+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 15,
-          "availableCount": 15
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -34,28 +34,28 @@
       "checkedAt": "2026-11-10T12:31:10.709848+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 15,
-          "availableCount": 15
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -63,28 +63,28 @@
       "checkedAt": "2026-11-10T13:47:12.483720+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -92,28 +92,28 @@
       "checkedAt": "2026-11-10T14:37:44.867290+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -121,28 +121,28 @@
       "checkedAt": "2026-11-10T15:26:09.254935+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -150,28 +150,28 @@
       "checkedAt": "2026-11-10T16:23:46.149968+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -179,28 +179,28 @@
       "checkedAt": "2026-11-10T17:20:59.435640+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -208,28 +208,28 @@
       "checkedAt": "2026-11-10T18:12:53.653724+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -237,28 +237,28 @@
       "checkedAt": "2026-11-10T19:20:15.471239+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -266,28 +266,28 @@
       "checkedAt": "2026-11-10T20:17:42.342976+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -295,28 +295,28 @@
       "checkedAt": "2026-11-10T21:06:30.886846+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -324,28 +324,28 @@
       "checkedAt": "2026-11-10T21:46:53.965510+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 17,
-          "availableCount": 17
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     },
@@ -353,28 +353,57 @@
       "checkedAt": "2026-11-10T22:26:01.605058+00:00",
       "byTarget": {
         "UA62BT": {
-          "minListedPrice": 9000,
-          "minAvailablePrice": 10800,
-          "listingCount": 5,
-          "availableCount": 2
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "UA62ST": {
           "minListedPrice": 1630,
-          "minAvailablePrice": 3780,
+          "minAvailablePrice": null,
           "listingCount": 5,
-          "availableCount": 2
+          "availableCount": 0
         },
         "GD07": {
-          "minListedPrice": 6990,
-          "minAvailablePrice": 6990,
-          "listingCount": 1,
-          "availableCount": 1
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         },
         "onepiece": {
-          "minListedPrice": 10960,
-          "minAvailablePrice": 10960,
-          "listingCount": 15,
-          "availableCount": 15
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
+        }
+      }
+    },
+    {
+      "checkedAt": "2026-11-10T22:57:46.569646+00:00",
+      "byTarget": {
+        "UA62BT": {
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
+        },
+        "UA62ST": {
+          "minListedPrice": 1630,
+          "minAvailablePrice": null,
+          "listingCount": 2,
+          "availableCount": 0
+        },
+        "GD07": {
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
+        },
+        "onepiece": {
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
         }
       }
     }
