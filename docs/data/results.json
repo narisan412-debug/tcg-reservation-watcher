@@ -1,6 +1,6 @@
 {
   "version": "3.7",
-  "checkedAt": "2026-11-10T03:27:30.484537+00:00",
+  "checkedAt": "2026-11-10T04:26:34.603562+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "items": [],
   "newCount": 0,
@@ -8,9 +8,9 @@
   "errors": [],
   "diagnostics": {
     "apiHits": 53,
-    "priceExcluded": 43,
+    "priceExcluded": 42,
     "invalidUrl": 0,
-    "nameExcluded": 6,
+    "nameExcluded": 7,
     "unavailableExcluded": 0,
     "outOfStockExcluded": 4,
     "unknownStockExcluded": 0,
@@ -47,8 +47,8 @@
       "apiHits": 30,
       "accepted": 0,
       "rejected": {
-        "priceExcluded": 24,
-        "nameExcluded": 6
+        "priceExcluded": 23,
+        "nameExcluded": 7
       },
       "queries": 1
     }
