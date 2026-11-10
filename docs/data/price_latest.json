@@ -1,6 +1,6 @@
 {
   "version": "4.3",
-  "checkedAt": "2026-11-10T12:31:10.709848+00:00",
+  "checkedAt": "2026-11-10T13:47:12.483720+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "description": "名称・商品コードが合う商品の参考掲載価格。価格上限超過・売切れを含む。通知判定には使用しない。",
   "byTarget": {
@@ -128,8 +128,8 @@
     "onepiece": {
       "label": "ワンピースカード 新弾",
       "maxPrice": 5280,
-      "listingCount": 15,
-      "availableCount": 15,
+      "listingCount": 17,
+      "availableCount": 17,
       "minListedPrice": 10960,
       "minAvailablePrice": 10960,
       "listings": [
@@ -138,6 +138,14 @@
           "name": "ワンピース カードゲーム 神の島の冒険 BOX ONE PIECE OP-15 バンダイ BANDAI 新品未開封",
           "price": 10960,
           "url": "https://store.shopping.yahoo.co.jp/evalue-omochayasan/4582769966002.html",
+          "availableFlag": true,
+          "availabilityLabel": "在庫あり"
+        },
+        {
+          "code": "yosabei_op-2026-06",
+          "name": "最安【テープ付き 新品未開封】ONE PIECEカードゲーム ブースターパック 世界最強の戦士 【OP-17】 BOX ボックス ワンピース バンダイ 2026/8/22 送料無料",
+          "price": 11000,
+          "url": "https://store.shopping.yahoo.co.jp/yosabei/op-2026-06.html",
           "availableFlag": true,
           "availabilityLabel": "在庫あり"
         },
@@ -174,28 +182,20 @@
           "availabilityLabel": "在庫あり"
         },
         {
+          "code": "yosabei_4582770067194",
+          "name": "最安『予約 前日〜当日出荷 テープ付き 新品未開封』2026/11/21発売 ワンピース ONE PIECE カードゲーム ブースターパック 神の支配【OP-18】BOX 送料無料",
+          "price": 14300,
+          "url": "https://store.shopping.yahoo.co.jp/yosabei/4582770067194.html",
+          "availableFlag": true,
+          "availabilityLabel": "予約受付中（API在庫あり）"
+        },
+        {
           "code": "mediaworld-plus_13922237000",
           "name": "『予約』{TCG} (BOX) ONE PIECE(ワンピース) カードゲーム ブースターパック 神の支配【OP-18】 バンダイ(24パック)(20261121)",
           "price": 14380,
           "url": "https://store.shopping.yahoo.co.jp/mediaworld-plus/13922237000.html",
           "availableFlag": true,
           "availabilityLabel": "予約受付中（API在庫あり）"
-        },
-        {
-          "code": "evalue-omochayasan_4582769865220",
-          "name": "ワンピース カードゲーム エクストラブースター Heroines Edition BOX ONE PIECE EB-03 バンダイ BANDAI 新品未開封",
-          "price": 14380,
-          "url": "https://store.shopping.yahoo.co.jp/evalue-omochayasan/4582769865220.html",
-          "availableFlag": true,
-          "availabilityLabel": "在庫あり"
-        },
-        {
-          "code": "yuyuspi_4582770059229",
-          "name": "ONE PIECEカードゲーム EB-05 エクストラブースター ONE PIECE Heroines Edition vol.2 1BOX 24パック入り ワンピースカード バンダイ",
-          "price": 14480,
-          "url": "https://store.shopping.yahoo.co.jp/yuyuspi/4582770059229.html",
-          "availableFlag": true,
-          "availabilityLabel": "在庫あり"
         }
       ],
       "mixedProducts": true
