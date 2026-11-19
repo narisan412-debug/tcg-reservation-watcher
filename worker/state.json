@@ -8,6 +8,13 @@
     "e492e2e92025d948d75115d4",
     "e92c281549fdb476376a746c"
   ],
-  "availableLastRun": [],
-  "statusLastRun": {}
+  "availableLastRun": [
+    "4090444a809675671b32781a"
+  ],
+  "statusLastRun": {
+    "4090444a809675671b32781a": {
+      "status": "stock",
+      "targetId": "UA62ST"
+    }
+  }
 }
