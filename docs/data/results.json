@@ -1,37 +1,38 @@
 {
   "version": "3.7",
-  "checkedAt": "2026-11-19T05:45:58.738196+00:00",
+  "checkedAt": "2026-11-19T06:47:49.311766+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "items": [],
   "newCount": 0,
   "notifiedCount": 0,
   "errors": [],
   "diagnostics": {
-    "apiHits": 57,
+    "apiHits": 60,
     "priceExcluded": 48,
     "invalidUrl": 0,
     "nameExcluded": 5,
     "unavailableExcluded": 0,
-    "outOfStockExcluded": 4,
+    "outOfStockExcluded": 7,
     "unknownStockExcluded": 0,
     "duplicateExcluded": 0,
     "accepted": 0
   },
   "byTarget": {
     "UA62BT": {
-      "apiHits": 10,
+      "apiHits": 11,
       "accepted": 0,
       "rejected": {
-        "priceExcluded": 10
+        "priceExcluded": 10,
+        "outOfStockExcluded": 1
       },
       "queries": 2
     },
     "UA62ST": {
-      "apiHits": 10,
+      "apiHits": 12,
       "accepted": 0,
       "rejected": {
         "priceExcluded": 6,
-        "outOfStockExcluded": 4
+        "outOfStockExcluded": 6
       },
       "queries": 2
     },

@@ -1,23 +1,32 @@
 {
   "version": "4.5",
-  "checkedAt": "2026-11-19T05:45:58.738196+00:00",
+  "checkedAt": "2026-11-19T06:47:49.311766+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "description": "設定上限以下かつ商品一致の参考価格。売切れは区別して記録。価格超過は除外。通知判定は従来どおり。",
   "byTarget": {
     "UA62BT": {
       "label": "ジョジョの奇妙な冒険 ブースターBOX UA62BT",
       "maxPrice": 6160,
-      "listingCount": 0,
+      "listingCount": 1,
       "availableCount": 0,
-      "minListedPrice": null,
+      "minListedPrice": 6160,
       "minAvailablePrice": null,
-      "listings": [],
+      "listings": [
+        {
+          "code": "esdigital_11059648",
+          "name": "UNION ARENA ブースターパック 『ジョジョの奇妙な冒険』シリーズ【UA62BT】(BOX)　おもちゃ　コレクション　トレーディングカードゲーム　TCG",
+          "price": 6160,
+          "url": "https://store.shopping.yahoo.co.jp/esdigital/11059648.html",
+          "availableFlag": false,
+          "availabilityLabel": "API在庫なし"
+        }
+      ],
       "mixedProducts": false
     },
     "UA62ST": {
       "label": "ジョジョの奇妙な冒険 スタートデッキ UA62ST",
       "maxPrice": 1650,
-      "listingCount": 2,
+      "listingCount": 3,
       "availableCount": 0,
       "minListedPrice": 1630,
       "minAvailablePrice": null,
@@ -35,6 +44,14 @@
           "name": "【予約2月12日発送予定】UNION ARENA スタートデッキ 『ジョジョの奇妙な冒険』シリーズ 【UA62ST】(クレジットカード決済禁止）",
           "price": 1650,
           "url": "https://store.shopping.yahoo.co.jp/tcg-saiun/jan4582770134773.html",
+          "availableFlag": false,
+          "availabilityLabel": "API在庫なし"
+        },
+        {
+          "code": "esdigital_11059649",
+          "name": "UNION ARENA スタートデッキ 『ジョジョの奇妙な冒険』シリーズ 【UA62ST】　おもちゃ　コレクション　トレーディングカードゲーム　TCG",
+          "price": 1650,
+          "url": "https://store.shopping.yahoo.co.jp/esdigital/11059649.html",
           "availableFlag": false,
           "availabilityLabel": "API在庫なし"
         }
