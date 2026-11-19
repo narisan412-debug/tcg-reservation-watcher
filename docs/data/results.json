@@ -1,6 +1,6 @@
 {
   "version": "3.7",
-  "checkedAt": "2026-11-19T13:49:36.692927+00:00",
+  "checkedAt": "2026-11-19T14:40:51.463597+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "items": [
     {
@@ -11,7 +11,7 @@
       "maxPrice": 1650,
       "shop": "Yahoo!ショッピング",
       "url": "https://store.shopping.yahoo.co.jp/esdigital/11059649.html",
-      "detectedAt": "2026-11-19T13:49:36.692927+00:00",
+      "detectedAt": "2026-11-19T14:40:51.463597+00:00",
       "kind": "スタートデッキ単品",
       "reservationHint": false,
       "status": "在庫あり（購入可否は販売ページで最終確認）",
