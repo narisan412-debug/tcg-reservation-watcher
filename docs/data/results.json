@@ -1,38 +1,21 @@
 {
   "version": "3.7",
-  "checkedAt": "2026-11-19T17:44:09.988000+00:00",
+  "checkedAt": "2026-11-19T18:41:58.331726+00:00",
   "source": "Yahoo!ショッピング商品検索API",
-  "items": [
-    {
-      "key": "4090444a809675671b32781a",
-      "target": "ジョジョの奇妙な冒険 スタートデッキ UA62ST",
-      "name": "UNION ARENA スタートデッキ 『ジョジョの奇妙な冒険』シリーズ 【UA62ST】　おもちゃ　コレクション　トレーディングカードゲーム　TCG",
-      "price": 1650,
-      "maxPrice": 1650,
-      "shop": "Yahoo!ショッピング",
-      "url": "https://store.shopping.yahoo.co.jp/esdigital/11059649.html",
-      "detectedAt": "2026-11-19T17:44:09.988000+00:00",
-      "kind": "スタートデッキ単品",
-      "reservationHint": false,
-      "status": "在庫あり（購入可否は販売ページで最終確認）",
-      "notificationReason": "新規在庫候補"
-    }
-  ],
-  "newCount": 1,
+  "items": [],
+  "newCount": 0,
   "notifiedCount": 0,
-  "errors": [
-    "通知失敗: 'latin-1' codec can't encode characters in position 11-16: ordinal not in range(256)"
-  ],
+  "errors": [],
   "diagnostics": {
     "apiHits": 60,
     "priceExcluded": 48,
     "invalidUrl": 0,
     "nameExcluded": 5,
     "unavailableExcluded": 0,
-    "outOfStockExcluded": 5,
+    "outOfStockExcluded": 7,
     "unknownStockExcluded": 0,
-    "duplicateExcluded": 1,
-    "accepted": 1
+    "duplicateExcluded": 0,
+    "accepted": 0
   },
   "byTarget": {
     "UA62BT": {
@@ -46,11 +29,10 @@
     },
     "UA62ST": {
       "apiHits": 12,
-      "accepted": 1,
+      "accepted": 0,
       "rejected": {
         "priceExcluded": 6,
-        "outOfStockExcluded": 4,
-        "duplicateExcluded": 1
+        "outOfStockExcluded": 6
       },
       "queries": 2
     },
