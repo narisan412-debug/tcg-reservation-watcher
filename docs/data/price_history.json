@@ -6757,6 +6757,35 @@
           "availableCount": 0
         }
       }
+    },
+    {
+      "checkedAt": "2026-11-20T10:14:19.129961+00:00",
+      "byTarget": {
+        "UA62BT": {
+          "minListedPrice": 6160,
+          "minAvailablePrice": null,
+          "listingCount": 1,
+          "availableCount": 0
+        },
+        "UA62ST": {
+          "minListedPrice": 1630,
+          "minAvailablePrice": null,
+          "listingCount": 3,
+          "availableCount": 0
+        },
+        "GD07": {
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
+        },
+        "onepiece": {
+          "minListedPrice": null,
+          "minAvailablePrice": null,
+          "listingCount": 0,
+          "availableCount": 0
+        }
+      }
     }
   ]
 }
