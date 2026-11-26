@@ -1,14 +1,14 @@
 {
   "version": "3.7",
-  "checkedAt": "2026-11-26T02:27:21.657776+00:00",
+  "checkedAt": "2026-11-26T11:24:45.825758+00:00",
   "source": "Yahoo!ショッピング商品検索API",
   "items": [],
   "newCount": 0,
   "notifiedCount": 0,
   "errors": [],
   "diagnostics": {
-    "apiHits": 60,
-    "priceExcluded": 47,
+    "apiHits": 61,
+    "priceExcluded": 48,
     "invalidUrl": 0,
     "nameExcluded": 6,
     "unavailableExcluded": 0,
@@ -37,10 +37,10 @@
       "queries": 2
     },
     "GD07": {
-      "apiHits": 7,
+      "apiHits": 8,
       "accepted": 0,
       "rejected": {
-        "priceExcluded": 6,
+        "priceExcluded": 7,
         "nameExcluded": 1
       },
       "queries": 1
