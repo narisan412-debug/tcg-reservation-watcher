@@ -7325,6 +7325,31 @@
           "accepted": 0
         }
       }
+    },
+    {
+      "checkedAt": "2026-11-27T21:33:28.605003+00:00",
+      "apiHits": 61,
+      "accepted": 0,
+      "newCount": 0,
+      "notifiedCount": 0,
+      "byTarget": {
+        "UA62BT": {
+          "apiHits": 11,
+          "accepted": 0
+        },
+        "UA62ST": {
+          "apiHits": 12,
+          "accepted": 0
+        },
+        "GD07": {
+          "apiHits": 8,
+          "accepted": 0
+        },
+        "onepiece": {
+          "apiHits": 30,
+          "accepted": 0
+        }
+      }
     }
   ]
 }
